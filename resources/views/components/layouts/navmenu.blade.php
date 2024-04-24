@@ -41,13 +41,14 @@
 
                         <li>
                             <ul>
-                                <li><a href="page-starter.html">ສິນເຊື່ອລໍຖ້າອະນຸມັດ</a></li>
-                                <li><a href="page-login.html">ສິນເຊື່ອລໍຖ້າຊຳລະ</a></li>
-                                <li><a href="page-login.html">ສິນເຊື່ອທັງໝົດ</a></li>
-                                <li><a href="page-login.html">ສິນເຊື່ອທີ່ຍັງເຄື່ອນໄຫວ</a></li>
-                                <li><a href="page-login.html">ສິນເຊື່ອກາຍກຳນົດ</a></li>
-                                <li><a href="page-login.html">ສິນເຊື່ອຊຳລະສຳເລັດ</a></li>
-                                <li><a href="page-login.html">ສິນເຊື່ອຍົກເລີກ</a></li>
+                                <li><a href="{{route('create-pawn')}}">ສ້າງສັນຍາສິນເຊື່ອ</a></li>
+                                <li><a href="{{route('pending-pawn')}}">ສິນເຊື່ອລໍຖ້າອະນຸມັດ</a></li>
+                                <li><a href="{{route('pending-pay-pawn')}}">ສິນເຊື່ອລໍຖ້າຊຳລະ</a></li>
+                                <li><a href="{{route('all-pawn')}}">ສິນເຊື່ອທັງໝົດ</a></li>
+                                <li><a href="{{route('movement-pawn')}}">ສິນເຊື່ອທີ່ຍັງເຄື່ອນໄຫວ</a></li>
+                                <li><a href="{{route('expire-pawn')}}">ສິນເຊື່ອກາຍກຳນົດ</a></li>
+                                <li><a href="{{route('finish-pawn')}}">ສິນເຊື່ອຊຳລະສຳເລັດ</a></li>
+                                <li><a href="{{route('cancel-pawn')}}">ສິນເຊື່ອຍົກເລີກ</a></li>
                             </ul>
                         </li>
 

@@ -5,11 +5,11 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">ໜ້າຫຼັກ</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">ຈັດການຂໍ້ມູນ</a></li>
-                        <li class="breadcrumb-item active">ຂໍ້ມູນລູກຄ້າ</li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">ຂໍ້ມູນຫຼັກຊັບ</a></li>
+                        <li class="breadcrumb-item active">ຂໍ້ມູນຫຼັກຊັບ</li>
                     </ol>
                 </div>
-                <h4 class="page-title">ຂໍ້ມູນລູກຄ້າ</h4>
+                <h4 class="page-title">ຂໍ້ມູນຫຼັກຊັບ</h4>
             </div>
         </div>
     </div>

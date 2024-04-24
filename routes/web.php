@@ -30,6 +30,17 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::get('/categorys', App\Livewire\Backend\Product\Category\IndexComponent::class)->name('category');
     Route::get('/products', App\Livewire\Backend\Product\IndexComponent::class)->name('product');
 
+    //Pawn
+    Route::get('/create-pawns', App\Livewire\Backend\Pawn\CreatePawnComponent::class)->name('create-pawn');
+    Route::get('/pending-pawns', App\Livewire\Backend\Pawn\PendingPawnComponent::class)->name('pending-pawn');
+    Route::get('/pending-pay-pawns', App\Livewire\Backend\Pawn\PendingPayPawnComponent::class)->name('pending-pay-pawn');
+    Route::get('/all-pawns', App\Livewire\Backend\Pawn\AllPawnComponent::class)->name('all-pawn');
+    Route::get('/movement-pawns', App\Livewire\Backend\Pawn\MovementPawnComponent::class)->name('movement-pawn');
+    Route::get('/expire-pawns', App\Livewire\Backend\Pawn\ExpirePawnComponent::class)->name('expire-pawn');
+    Route::get('/finish-pawns', App\Livewire\Backend\Pawn\FinishPawnComponent::class)->name('finish-pawn');
+    Route::get('/cancel-pawns', App\Livewire\Backend\Pawn\CancelPawnComponent::class)->name('cancel-pawn');
+    
+
     //Setting
     Route::get('/currencies', App\Livewire\Backend\Currency\IndexComponent::class)->name('currency');
 

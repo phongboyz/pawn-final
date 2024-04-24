@@ -66,23 +66,23 @@
         <!-- <script src="{{asset('backend/assets/js/pages/form-advanced.init.js')}}"></script> -->
 
         <script>
-            window.Livewire.on('alert', param => {
-                toastr.options.positionClass = 'toast-bottom-right';
-                toastr[param['type']](param['message'],param['type']);
-            });
+        window.Livewire.on('alert', param => {
+            toastr.options.positionClass = 'toast-bottom-right';
+            toastr[param['type']](param['message'],param['type']);
+        });
 
-            @if(Session::has('success'))
-                toastr.options.positionClass = 'toast-bottom-right';
-                toastr.success("{{Session::get('success') }}")
-            @elseif(Session::has('warning'))
-                toastr.options.positionClass = 'toast-bottom-right';
-                toastr.warning("{{Session::get('warning')}}")
-            @elseif(Session::has('error'))
-                toastr.options.positionClass = 'toast-bottom-right';
-                toastr.error("{{Session::get('error')}}")
-            @endif
+        @if(Session::has('success'))
+            toastr.options.positionClass = 'toast-bottom-right';
+            toastr.success("{{Session::get('success') }}")
+        @elseif(Session::has('warning'))
+            toastr.options.positionClass = 'toast-bottom-right';
+            toastr.warning("{{Session::get('warning')}}")
+        @elseif(Session::has('error'))
+            toastr.options.positionClass = 'toast-bottom-right';
+            toastr.error("{{Session::get('error')}}")
+        @endif
 
-        </script>
+    </script>
 
         @stack('scripts')
     </body>
