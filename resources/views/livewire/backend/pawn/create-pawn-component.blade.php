@@ -27,7 +27,7 @@
                                         <div class="input-group">
                                             <span class="input-group-prepend">
                                                 <button type="button"
-                                                    class="btn waves-effect waves-light btn-purple"><i class="fa fa-plus"></i></button>
+                                                    class="btn waves-effect waves-light btn-purple" wire:click="addCus"><i class="fa fa-plus"></i></button>
                                             </span>
                                             <input type="text" id="example-input3-group2" name="example-input3-group2"
                                                 class="form-control" placeholder="ເບີໂທ / ຊື່ / ນາມສະກຸນ" wire:model="searchCus" wire:keydown.enter="searchCusData">
@@ -88,7 +88,7 @@
                                         <div class="btn-group btn-group-justified text-white mb-2">
                                             <a class="btn btn-purple waves-effect waves-light"><i class="fa fa-plus"></i> ເພີ່ມຫຼັກຊັບ</a>
                                             <a class="btn btn-primary waves-effect waves-light"><i class="fa fa-search"></i> ຄົ້ນຫາ</a>
-                                            <a class="btn btn-danger waves-effect waves-light"><i class="far fa-arrow-alt-circle-right"></i> ດຶງຂໍ້ມູນລ່າສຸດ</a>
+                                            <a class="btn btn-danger waves-effect waves-light" wire:click="getLastProductData"><i class="far fa-arrow-alt-circle-right"></i> ດຶງຂໍ້ມູນລ່າສຸດ</a>
                                         </div>
                                     </div>
                                 </div>
@@ -135,10 +135,17 @@
             </div>
         </div>
     </div>
+
+    @include('livewire.backend.pawn.modal-create.modal-cus')
 </div>
 
 @push('scripts')
 <script>
-
+window.addEventListener('show-cus', event => {
+    $('#custom-width-modal').modal('show');
+})
+window.addEventListener('hide-cus', event => {
+    $('#custom-width-modal').modal('hide');
+})
 </script>
 @endpush

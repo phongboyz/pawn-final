@@ -8,7 +8,8 @@ use App\Models\Product;
 
 class CreatePawnComponent extends Component
 {
-    public $searchCus, $cusid, $cusname, $cuslname, $cusphone, $cusColor = 'secondary';
+    public $searchCus, $cusid, $cusname, $cuslname, $cusphone, $cusColor = 'secondary', $cusaddname, $cusaddlname, $cusaddphone, $cusaddaddress;
+
     public $searchPro, $proid, $productmuad, $productcate, $productnote, $proColor = 'secondary';
 
     public function render()
@@ -40,28 +41,49 @@ class CreatePawnComponent extends Component
         }
     }
 
-    public function searchProData()
+    public function addCus(){
+        $this->dispatch('show-cus');
+    }
+
+    public function storeCus(){
+        $this->validate([
+            'cusaddname'=>'required',
+            'cusaddlname'=>'required',
+            'cusaddphone'=>'required',
+        ],[
+            'cusaddname.required'=>'ກະລຸນາປ້ອນ ຊື່ລູກຄ້າ ກ່ອນ!',
+            'cusaddlname.required'=>'ກະລຸນາປ້ອນ ນາມສະກຸນ ກ່ອນ!',
+            'cusaddphone.required'=>'ກະລຸນາປ້ອນ ເບີໂທ ກ່ອນ!',
+        ]);
+
+        $cus = new Customer();
+        $cus->name = $this->cusaddname;
+        $cus->lname = $this->cusaddlname;
+        $cus->phone = $this->cusaddphone;
+        $cus->address = $this->cusaddaddress;
+        $cus->save();
+
+        $this->cusid = $cus->id;
+        $this->cusname = $cus->name;
+        $this->cuslname = $cus->lname;
+        $this->cusphone = $cus->phone;
+        $this->cusColor = 'success';
+        $this->dispatch('alert',type: 'success', message:'ເພີ່ມສຳເລັດ!');
+        $this->dispatch('hide-cus');
+    }
+
+    public function getLastProductData()
     {
-        if($this->searchPro){
-            $cus = Product::whereAny(['name'],'LIKE','%'.$this->searchCus.'%')->first();
-            if($cus){
-                $this->cusid = $cus->id;
-                $this->cusname = $cus->name;
-                $this->cuslname = $cus->lname;
-                $this->cusphone = $cus->phone;
-                $this->cusColor = 'success';
-                $this->dispatch('alert',type: 'success', message:'ຄົ້ນຫາສຳເລັດ!');
-            }else{
-                $this->dispatch('alert',type: 'warning', message:'ບໍ່ພົບເຫັນຂໍ້ມູນລູກຄ້າ, ກະລຸນາລອງໃໝ່!');
-                $this->searchPro = null;
-            }
+        $pro = Product::orderBy('id','desc')->first();
+        if($pro){
+            $this->proid = $pro->id;
+            $this->productmuad = $pro->muadname->name;
+            $this->productcate = $pro->catename->name;
+            $this->productnote = $pro->name;
+            $this->proColor = 'success';
+            $this->dispatch('alert',type: 'success', message:'ດຶງຂໍ້ມູນສຳເລັດ!');
         }else{
-            $this->cusid = $cus->id;
-            $this->cusname = $cus->name;
-            $this->cuslname = $cus->lname;
-            $this->cusphone = $cus->phone;
-            $this->cusColor = 'success';
-            $this->dispatch('alert',type: 'error', message:'ກະລຸນາປ້ອນຂໍ້ມູນການຄົ້ນຫາ!');
+            $this->dispatch('alert',type: 'error', message:'ບໍ່ມີຂໍ້ມູນ!');
         }
     }
 }
