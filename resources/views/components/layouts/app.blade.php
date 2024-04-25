@@ -57,7 +57,7 @@
         <!-- Toastr js -->
         <script src="{{asset('backend/assets/libs/toastr/toastr.min.js')}}"></script>
         <script src="{{asset('backend/assets/js/pages/toastr.init.js')}}"></script>
-
+        <script src="{{asset('backend/assets/js/money.format.js')}}"></script>
         <!-- Modal -->
         <script src="{{asset('backend/assets/libs/custombox/custombox.min.js')}}"></script>
 

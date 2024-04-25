@@ -239,6 +239,9 @@
                                                     <a class="btn btn-danger waves-effect waves-light"
                                                         wire:click="delete({{$item->id}})"><i
                                                             class="mdi mdi-window-close"></i></a>
+                                                    <a class="btn btn-info waves-effect waves-light"
+                                                        wire:click="sendId({{$item->id}})"><i
+                                                            class="mdi mdi-send-circle"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

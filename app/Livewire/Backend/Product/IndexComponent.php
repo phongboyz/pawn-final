@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Livewire\WithFileUploads;
 use App\Exports\ProductsExport;
+use App\Livewire\Backend\Pawn\CreatePawnComponent;
 
 class IndexComponent extends Component
 {
@@ -20,6 +21,7 @@ class IndexComponent extends Component
     public $addId;
     public $muads, $categorys, $villages;
     public $refresh_sel = 0, $refresh_muad = 0, $refresh_vil = 0;
+    public CreatePawnComponent $create;
 
     public function render()
     {
@@ -193,5 +195,10 @@ class IndexComponent extends Component
     public function exportExcel()
     {
         return (new ProductsExport($this->data))->download('excel-products.xlsx');
+    }
+
+    public function sendId($ids){
+        session()->flash('productId', $ids);
+        return redirect(route('create-pawn'));
     }
 }

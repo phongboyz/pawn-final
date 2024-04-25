@@ -3,8 +3,11 @@
 namespace App\Livewire\Backend\Pawn;
 
 use Livewire\Component;
+use App\Models\Branch;
 use App\Models\Customer;
 use App\Models\Product;
+use App\Http\Controllers\NumberToStringController;
+
 
 class CreatePawnComponent extends Component
 {
@@ -12,8 +15,26 @@ class CreatePawnComponent extends Component
 
     public $searchPro, $proid, $productmuad, $productcate, $productnote, $proColor = 'secondary';
 
+    public $branchs, $branchid;
+
+    public $int_type = 'constant', $money, $moneyname, $days, $int, $nguad, $fees, $adj;
+
+    public function mount()
+    {
+        $this->proid = session('productId');
+        $pro = Product::find($this->proid);
+        if($pro){
+            $this->productmuad = $pro->muadname->name;
+            $this->productcate = $pro->catename->name;
+            $this->productnote = $pro->name;
+            $this->proColor = 'success';
+        }
+        $this->branchid = auth()->user()->branch_id;
+    }
+
     public function render()
     {
+        $this->branchs = Branch::select('id','name')->get();
         return view('livewire.backend.pawn.create-pawn-component');
     }
 
@@ -72,6 +93,10 @@ class CreatePawnComponent extends Component
         $this->dispatch('hide-cus');
     }
 
+    public function searchProduct(){
+        return redirect(route('product'));
+    }
+
     public function getLastProductData()
     {
         $pro = Product::orderBy('id','desc')->first();
@@ -85,5 +110,20 @@ class CreatePawnComponent extends Component
         }else{
             $this->dispatch('alert',type: 'error', message:'ບໍ່ມີຂໍ້ມູນ!');
         }
+    }
+
+    public function convertTostring(){
+        if(!empty($this->money)){
+            $moneys = str_replace(',', '', $this->money);
+            if (intval($moneys)) {
+                $con = new NumberToStringController();
+                $this->moneyname = $con->convert($moneys);
+            }else{
+                $this->dispatch('alert',type: 'error', message:'ກະລຸນາປ້ອນຈຳນວນເງິນເປັນຕົວເລກ!');
+            }
+        }else{
+            $this->moneyname = null;
+        }
+        
     }
 }
