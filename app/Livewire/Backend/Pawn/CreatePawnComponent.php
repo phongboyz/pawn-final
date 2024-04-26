@@ -219,7 +219,7 @@ class CreatePawnComponent extends Component
             }
 
             session()->flash('success', 'ສ້າງສັນຍາສິນເຊື່ອສຳເລັດ');
-            return redirect(route('all-pawn'));
+            return redirect(route('pawn-detail', $data->id));
 
         }else{
             $this->dispatch('alert',type: 'error', message:'ກະລຸນາເພີ່ມຂໍ້ມູນລູກຄ້າ ແລະ ຂໍ້ມູນສິນຄ້າກ່ອນ!');

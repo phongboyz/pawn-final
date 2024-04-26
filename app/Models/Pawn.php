@@ -16,6 +16,8 @@ class Pawn extends Model
         'crc_id',
         'rate',
         'money',
+        'money_name',
+        'interest_percent',
         'interest',
         'balance',
         'balance_int',
@@ -32,6 +34,7 @@ class Pawn extends Model
         'user_id',
         'branch_id',
         'count_date',
+        'nguad',
         'created_date',
         'expire_date',
         'count_expire_date',
@@ -49,7 +52,7 @@ class Pawn extends Model
 
     public function crcname()
     {
-        return $this->belongsTo('App\Models\Curency','crc_id','id');
+        return $this->belongsTo('App\Models\Currency','crc_id','id');
     }
 
     public function username()

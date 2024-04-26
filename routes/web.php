@@ -39,6 +39,8 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::get('/expire-pawns', App\Livewire\Backend\Pawn\ExpirePawnComponent::class)->name('expire-pawn');
     Route::get('/finish-pawns', App\Livewire\Backend\Pawn\FinishPawnComponent::class)->name('finish-pawn');
     Route::get('/cancel-pawns', App\Livewire\Backend\Pawn\CancelPawnComponent::class)->name('cancel-pawn');
+
+    Route::get('/pawn-detail/{id}', App\Livewire\Backend\Pawn\Bill\ShowPawnDetailComponent::class)->name('pawn-detail');
     
 
     //Setting

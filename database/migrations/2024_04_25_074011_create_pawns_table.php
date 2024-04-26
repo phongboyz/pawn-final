@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('rate',15,2)->default('0');
             $table->decimal('money',15,2)->default('0');
             $table->string('money_name');
+            $table->decimal('interest_percent',15,2)->default('0');
             $table->decimal('interest',15,2)->default('0');
             $table->decimal('balance',15,2)->default('0');
             $table->decimal('balance_int',15,2)->default('0');
@@ -36,6 +37,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->integer('branch_id');
             $table->integer('count_date');
+            $table->integer('nguad');
             $table->date('created_date');
             $table->date('expire_date');
             $table->integer('count_expire_date')->default('0');
