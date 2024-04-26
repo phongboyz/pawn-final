@@ -6,6 +6,10 @@ use Livewire\Component;
 use App\Models\Branch;
 use App\Models\Customer;
 use App\Models\Product;
+use App\Models\Currency;
+use App\Models\Pawn;
+use App\Models\PawnCode;
+use App\Models\PawnDetail;
 use App\Http\Controllers\NumberToStringController;
 
 
@@ -15,9 +19,9 @@ class CreatePawnComponent extends Component
 
     public $searchPro, $proid, $productmuad, $productcate, $productnote, $proColor = 'secondary';
 
-    public $branchs, $branchid;
+    public $branchs, $crcs;
 
-    public $int_type = 'constant', $money, $moneyname, $days, $int, $nguad, $fees, $adj;
+    public $int_type = 'constant', $crc = 1, $money, $moneyname, $days, $int, $nguad, $fees, $adj, $branchid;
 
     public function mount()
     {
@@ -35,6 +39,7 @@ class CreatePawnComponent extends Component
     public function render()
     {
         $this->branchs = Branch::select('id','name')->get();
+        $this->crcs = Currency::select('id','name')->get();
         return view('livewire.backend.pawn.create-pawn-component');
     }
 
@@ -123,6 +128,101 @@ class CreatePawnComponent extends Component
             }
         }else{
             $this->moneyname = null;
+        }
+    }
+
+    public function store(){
+        if(!empty($this->cusid) && !empty($this->proid)){
+            $this->validate([
+                'cusid' => 'required',
+                'proid' => 'required',
+                'money' => 'required',
+                'moneyname' => 'required',
+                'crc' => 'required',
+                'days' => 'required',
+                'int' => 'required',
+                'nguad' => 'required',
+                'fees' => 'required',
+                'adj' => 'required',
+            ],[
+                'cusid.required' => 'ກະລຸນາເລືອກຂໍ້ມູນລູກຄ້າກ່ອນ',
+                'proid.required' => 'ກະລຸນາເລືອກສິນຄ້າກ່ອນ',
+            ]);
+
+            $pawn_money = str_replace(',', '', $this->money);
+            $date_now = date('Y-m-d');
+            $all_interest = 0;
+
+            $pawn_intr = (($pawn_money * $this->int) / 100);
+            $pawn_fees = (($pawn_money * $this->fees) / 100);
+            $pawn_intr_adjust = (((($pawn_money / $this->nguad) + $pawn_intr) * $this->adj) / 100);
+            $pawn_pay_date = $this->days / $this->nguad;
+
+            $pawn_code = new PawnCode();
+            $pawn_code->name = auth()->user()->branchname->code;
+            $pawn_code->save();
+            $code = PawnCode::where('name', $pawn_code->name)->orderBy('number','desc')->first();
+
+            $data = new Pawn();
+            $data->code = $code->name.'-'.$code->number;
+            $data->product_id = $this->proid;
+            $data->cus_id = $this->cusid;
+            $data->crc_id = $this->crc;
+            $data->money = $pawn_money;
+            $data->money_name = $this->moneyname;
+            $data->interest = $pawn_intr;
+            $data->balance = $pawn_money;
+            $data->balance_int = $pawn_intr;
+            $data->interestType = $this->int_type;
+            $data->adj_percent = $this->adj;
+            $data->fees_percent = $this->fees;
+            $data->status = 'p'; // p=pending-  c=confirm-  t=tran-  x=expire-  f=finish-  r=reject
+            $data->user_id = auth()->user()->id;
+            $data->branch_id = auth()->user()->branch_id;
+            $data->count_date = $this->days;
+            $data->created_date = $date_now;
+            $data->expire_date = date('Y-m-d',strtotime($date_now. ' + '. $this->days .' days'));
+            $data->save();
+
+            for($i = 1; $i <= $this->nguad; $i++)
+            {
+                $multi_date = ($this->days / $this->nguad) * $i;
+
+                $detail = new PawnDetail();
+                $detail->pawn_id = $data->id;
+                $detail->apm_count = $i;
+                $detail->apm_date = date('Y-m-d',strtotime($date_now. ' + '. $multi_date .' days'));
+                $detail->apm_money = $pawn_money / $this->nguad;
+                if($this->int_type == 'constant'){
+                    $detail->apm_int = $pawn_intr;
+                }else{
+                    if($i == 1){
+                        $detail->apm_int = (($pawn_money * $this->int) / 100) ;
+                    }else{
+                        $j = $i;
+                        $detail->apm_int = ((($pawn_money -(($pawn_money / $this->nguad)*($j-1))) * $this->int) / 100) ;
+                    }
+                    
+                }
+                if($i == 1){
+                    $detail->apm_fees = $pawn_fees;
+                }else{
+                    $detail->apm_fees = 0;
+                }
+                $detail->user_id = auth()->user()->id;
+                $detail->branch_id = auth()->user()->branch_id;
+                $detail->status = 't'; //t=tran  -x=expire  -f=finish  -r=reject
+                $detail->save();
+
+                $all_interest += $pawn_intr; 
+
+            }
+
+            session()->flash('success', 'ສ້າງສັນຍາສິນເຊື່ອສຳເລັດ');
+            return redirect(route('all-pawn'));
+
+        }else{
+            $this->dispatch('alert',type: 'error', message:'ກະລຸນາເພີ່ມຂໍ້ມູນລູກຄ້າ ແລະ ຂໍ້ມູນສິນຄ້າກ່ອນ!');
         }
         
     }

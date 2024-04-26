@@ -42,6 +42,23 @@
 
                                 </div>
                             </div>
+                            <div class="col-2">
+                            <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <button type="button"
+                                                class="btn waves-effect waves-light btn-primary">ສະກຸນເງິນ</button>
+                                        </span>
+                                        <select class="form-control" name="crc" id="crc"
+                                            wire:model="crc">
+                                            @foreach ($crcs as $item)
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
                             <div class="col-3">
                                 <table width="100%">
                                     <tr>
@@ -66,7 +83,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div class="col-6 text-right">
+                            <div class="col-4 text-right">
                                 <p>{{now()}}</p>
                             </div>
                         </div>
@@ -261,7 +278,7 @@
                                                             </span>
                                                             <input type="number" id="example-input1-group2"
                                                                 name="example-input1-group2" class="form-control"
-                                                                wire:model="int" placeholder="ອັດຕາດອກເບ້ຍ">
+                                                                wire:model="int" placeholder="ອັດຕາດອກເບ້ຍ X %">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -274,7 +291,7 @@
                                                             </span>
                                                             <input type="number" id="example-input1-group2"
                                                                 name="example-input1-group2" class="form-control"
-                                                                wire:model="fees" placeholder="ຄ່າທຳນຽມ">
+                                                                wire:model="fees" placeholder="ຄ່າທຳນຽມ X %">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -287,21 +304,19 @@
                                                             </span>
                                                             <input type="number" id="example-input1-group2"
                                                                 name="example-input1-group2" class="form-control"
-                                                                wire:model="adj" placeholder="ປັບໄໝ">
+                                                                wire:model="adj" placeholder="ປັບໄໝ X %">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </fieldset>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12">
-                                <hr>
-                                <button class="btn btn-teal phetsarath-font"> <i class="mdi mdi-file-document-box-plus-outline"></i> ສ້າງສັນຍາ</button>
+                            <div class="col-12 py-2" style="background-color: #DADADA;">
+                                <button class="btn btn-teal phetsarath-font" wire:click="store"> <i class="mdi mdi-file-document-box-plus-outline"></i> ສ້າງສັນຍາ</button>
                                 <a href="{{route('create-pawn')}}" class="btn btn-orange phetsarath-font"><i class=" mdi mdi-file-document-box-remove"></i> ລ້າງຂໍ້ມູນ</a>
                             </div>
                         </div>
