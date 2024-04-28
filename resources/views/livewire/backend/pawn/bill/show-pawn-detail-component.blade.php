@@ -21,8 +21,8 @@
                     <div class="col-12">
                         <a href="{{route('pdf-bill-pawn',$pawnid)}}" target="_bank" class="btn btn-info phetsarath-font"><i class="mdi mdi-file-document-box-outline"></i>
                             ສັນຍາຊວດຈຳ</a>
-                        <button class="btn btn-primary phetsarath-font"><i class="mdi mdi-file-table-box-multiple-outline"></i>
-                            ແຜນການຊຳລະ</button>
+                        <a href="{{route('pdf-bill-plan-pawn',$pawnid)}}" target="_bank" class="btn btn-primary phetsarath-font"><i class="mdi mdi-file-table-box-multiple-outline"></i>
+                            ແຜນການຊຳລະ</a>
                         <button class="btn btn-orange phetsarath-font"><i class="mdi mdi-cash-usd-outline"></i>
                             ຊຳລະ</button>
                         <a href="{{route('create-pawn')}}" class="btn btn-pink float-right phetsarath-font"><i
@@ -196,13 +196,13 @@
 
                             <tr>
                                 <td class="text-center" style="font-size: 14px;" colspan="2"><b>ລວມ :</b></td>
-                                <td class="text-center" style="font-size: 14px;">{{number_format($moneys,2,',','.')}}
+                                <td class="text-center" style="font-size: 14px;">{{number_format($pawn->money,2,',','.')}}
                                 </td>
                                 <td class="text-center" style="font-size: 14px;">{{number_format($ints,2,',','.')}}</td>
                                 <td class="text-center" style="font-size: 14px;">@if($feess != 0)
                                     {{number_format($feess,2,',','.')}} @else - @endif</td>
                                 <td class="text-center" style="font-size: 14px;">
-                                    {{number_format($moneys + $ints + $feess,2,',','.')}}</td>
+                                    {{number_format($pawn->money + $ints + $feess,2,',','.')}}</td>
                             </tr>
                         </table>
                     </div>

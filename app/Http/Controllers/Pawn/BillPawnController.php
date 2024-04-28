@@ -18,4 +18,14 @@ class BillPawnController extends Controller
         return PDF::loadHtml($pdfs)->setPaper('A4', 'portrait')->stream('ສັນຍາຊວດຈຳ.pdf',array('Attachment'=>0));
         
     }
+
+    public function generatePlanPDF($id)
+    {
+        $data = Pawn::find($id);
+        $detail = PawnDetail::where('pawn_id',$id)->get();
+        // $customPaper = [0, 0, 368.50, 581.10];
+        $pdfs = mb_convert_encoding(\View::make('livewire.backend.pawn.bill.bill-plan-pawn', ['data'=>$data, 'detail'=>$detail]), 'HTML-ENTITIES', 'UTF-8');
+        return PDF::loadHtml($pdfs)->setPaper('A4', 'landscape')->stream('ແຜນການຊຳລະ.pdf',array('Attachment'=>0));
+        
+    }
 }

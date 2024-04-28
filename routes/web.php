@@ -42,6 +42,7 @@ Route::group(['middleware'=> 'auth'], function(){
 
     Route::get('/pawn-detail/{id}', App\Livewire\Backend\Pawn\Bill\ShowPawnDetailComponent::class)->name('pawn-detail');
     Route::get('/pdf-bill-pawn/{id}', [App\Http\Controllers\Pawn\BillPawnController::class, 'generatePDF'])->name('pdf-bill-pawn');
+    Route::get('/pdf-bill-plan-pawn/{id}', [App\Http\Controllers\Pawn\BillPawnController::class, 'generatePlanPDF'])->name('pdf-bill-plan-pawn');
     
 
     //Setting
