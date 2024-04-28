@@ -34,6 +34,7 @@ class IndexComponent extends Component
     public function resetField(){
         $this->editId = null;
         $this->delId = null;
+        $this->code = null;
         $this->name = null;
     }
 
@@ -57,24 +58,26 @@ class IndexComponent extends Component
     public function store() 
     {
         $this->validate([
+            'code'=>'required',
             'name'=>'required',
-            'rate'=>'required',
+            // 'rate'=>'required',
         ],[
+            'code.required'=>'ກະລຸນາປ້ອນ ລະຫັດສະກຸນເງິນກ່ອນ ກ່ອນ!',
             'name.required'=>'ກະລຸນາປ້ອນ ສະກຸນເງິນກ່ອນ ກ່ອນ!',
-            'rate.required'=>'ກະລຸນາປ້ອນ ອັດຕາແລກປ່ຽນ ກ່ອນ!',
+            // 'rate.required'=>'ກະລຸນາປ້ອນ ອັດຕາແລກປ່ຽນ ກ່ອນ!',
         ]);
 
         if($this->editId){
             Currency::where('id',$this->editId)->update([
+                'code'=>$this->code,
                 'name'=>$this->name,
-                'rate'=>$this->rate,
             ]);
             session()->flash('success', 'ອັບເດດຂໍ້ມູນສຳເລັດ');
         }else{
             Currency::insert([
                 'valuedt'=>date('Y-m-d'),
+                'code'=>$this->code,
                 'name'=>$this->name,
-                'rate'=>$this->rate,
             ]);
             session()->flash('success', 'ບັນທຶກຂໍ້ມູນສຳເລັດ');
         }

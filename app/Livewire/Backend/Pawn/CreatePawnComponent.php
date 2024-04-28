@@ -180,6 +180,7 @@ class CreatePawnComponent extends Component
             $data->user_id = auth()->user()->id;
             $data->branch_id = auth()->user()->branch_id;
             $data->count_date = $this->days;
+            $data->nguad = $this->nguad;
             $data->created_date = $date_now;
             $data->expire_date = date('Y-m-d',strtotime($date_now. ' + '. $this->days .' days'));
             $data->save();

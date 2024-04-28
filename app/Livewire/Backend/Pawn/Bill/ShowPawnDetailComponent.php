@@ -11,7 +11,7 @@ class ShowPawnDetailComponent extends Component
     public $pawnid, $pawn, $detail, $detailf, $detailc;
 
     public function mount($id){
-        $this->detailid = $id;
+        $this->pawnid = $id;
         $this->pawn = Pawn::find($id);
         $this->detail = PawnDetail::where('pawn_id', $id)->get();
         $this->detailf = PawnDetail::where('pawn_id', $id)->where('status','f')->get();

@@ -63,7 +63,7 @@
 
                         <li>
                             <ul>
-                                <li><a href="{{route('currency')}}">ສະກຸນເງິນ & ອັດຕາແລກປ່ຽນ</a></li>
+                                <li><a href="{{route('currency')}}">ສະກຸນເງິນ</a></li>
                                 <li><a href="page-starter.html">ແຫຼ່ງທຶນ</a></li>
                                 <li><a href="page-login.html">ລາຍງານແຫຼ່ງທຶນ</a></li>
                             </ul>

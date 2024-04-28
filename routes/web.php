@@ -41,6 +41,7 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::get('/cancel-pawns', App\Livewire\Backend\Pawn\CancelPawnComponent::class)->name('cancel-pawn');
 
     Route::get('/pawn-detail/{id}', App\Livewire\Backend\Pawn\Bill\ShowPawnDetailComponent::class)->name('pawn-detail');
+    Route::get('/pdf-bill-pawn/{id}', [App\Http\Controllers\Pawn\BillPawnController::class, 'generatePDF'])->name('pdf-bill-pawn');
     
 
     //Setting

@@ -6,10 +6,10 @@
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">ໜ້າຫຼັກ</a></li>
                         <li class="breadcrumb-item"><a href="javascript: void(0);">ຈັດການຂໍ້ມູນ</a></li>
-                        <li class="breadcrumb-item active">ຂໍ້ມູນສະກຸນເງິນ ແລະ ອັດຕາແລກປ່ຽນ</li>
+                        <li class="breadcrumb-item active">ຂໍ້ມູນສະກຸນເງິນ</li>
                     </ol>
                 </div>
-                <h4 class="page-title">ຂໍ້ມູນສະກຸນເງິນ ແລະ ອັດຕາແລກປ່ຽນ</h4>
+                <h4 class="page-title">ຂໍ້ມູນສະກຸນເງິນ</h4>
             </div>
         </div>
     </div>
@@ -33,19 +33,19 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <p>ຊື່ສະກຸນເງິນ</p>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            wire:model="name" placeholder="ຊື່ສະກຸນເງິນ" wire:keydown.enter="store" require>
-                                        @error('name') <span style="color: red"
+                                        <p>ລະຫັດສະກຸນເງິນ</p>
+                                        <input type="text" class="form-control @error('code') is-invalid @enderror"
+                                            wire:model="code" placeholder="ລະຫັດສະກຸນເງິນ" wire:keydown.enter="store" require>
+                                        @error('code') <span style="color: red"
                                             class="error">{{ $message }}</span>@enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <p>ອັດຕາແລກປ່ຽນ</p>
-                                        <input type="text" class="form-control @error('rate') is-invalid @enderror"
-                                            wire:model="rate" placeholder="ອັດຕາແລກປ່ຽນ" wire:keydown.enter="store" require>
-                                        @error('rate') <span style="color: red"
+                                        <p>ຊື່ສະກຸນເງິນ</p>
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                            wire:model="name" placeholder="ຊື່ສະກຸນເງິນ" wire:keydown.enter="store" require>
+                                        @error('name') <span style="color: red"
                                             class="error">{{ $message }}</span>@enderror
                                     </div>
                                 </div>
@@ -110,8 +110,8 @@
                                     <thead>
                                         <tr class="text-center">
                                             <th> ລຳດັບ </th>
+                                            <th> ລະຫັດ </th>
                                             <th> ສະກຸນເງິນ </th>
-                                            <th> ອັດຕາແລກປ່ຽນ </th>
                                             <th> ປຸ່ມກົດ </th>
                                         </tr>
                                     </thead>
@@ -120,8 +120,8 @@
                                         @forelse ($data as $key => $item)
                                         <tr class="text-center">
                                             <td>{{$no++}}</td>
+                                            <td>{{$item->code}}</td>
                                             <td>{{$item->name}}</td>
-                                            <td>{{number_format($item->rate,2,',','.')}}</td>
                                             <td>
                                                 <div class="btn-group btn-group-justified text-white mb-2">
                                                     <a class="btn btn-warning waves-effect waves-light"

@@ -86,7 +86,69 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
+                                        @php $no = 1; @endphp
+                                        @forelse ($data as $item)
+                                        <tr>
+                                            <td class="text-center" style="font-size: 12px">{{$no++}}</td>
+                                            <td class="text-center" style="font-size: 12px">{{$item->code}}</td>
+                                            <td class="text-center" style="font-size: 12px">
+                                                ສ້າງ: {{date('d/m/Y',strtotime($item->created_date))}}
+                                                <br> ໝົດ: {{date('d/m/Y',strtotime($item->expire_date))}}
+                                            </td>
+                                            <td class="text-center" style="font-size: 12px">{{$item->count_date}}</td>
+                                            <td class="text-center" style="font-size: 12px">{{$item->nguad}}</td>
+                                            <td class="text-center" style="font-size: 12px">
+                                                @if($item->cusname->gender == 'm') ທ້າວ @else ນາງ @endif
+                                                {{$item->cusname->name}} {{$item->cusname->lname}}
+                                            </td>
+                                            <td class="text-center" style="font-size: 12px">
+                                                {{$item->proname->muadname->name}}
+                                            </td>
+                                            <td class="text-center" style="font-size: 12px">
+                                                {{$item->proname->catename->name}}
+                                            </td>
+                                            <td class="text-center" style="font-size: 12px">
+                                                {{$item->proname->name}} {{$item->proname->note}}
+                                            </td>
+                                            <td class="text-center" style="font-size: 12px">
+                                            {{number_format($item->money,2,',','.')}} {{$item->crcname->name}}
+                                            </td>
+                                            <td class="text-center" style="font-size: 12px">
+                                            {{number_format($item->balance,2,',','.')}} {{$item->crcname->name}}
+                                            </td>
+                                            <td class="text-center" style="font-size: 12px">
+                                                @if ($item->status == 'p')
+                                                    ລໍຖ້າອະນຸມັດ
+                                                @elseif ($item->status == 'c')
+                                                    ອະນຸມັດສຳເລັດ
+                                                @elseif ($item->status == 't')
+                                                    ກຳລັງເຄື່ອນໄຫວ
+                                                @elseif ($item->status == 'x')
+                                                    ກາຍກຳນົດ
+                                                @elseif ($item->status == 'f')
+                                                    ປິດງວດ
+                                                @elseif ($item->status == 'r')
+                                                    ຍົກເລີກ
+                                                @endif
+                                            </td>
+                                            <td class="text-center" style="font-size: 12px">
+                                            <a href="{{route('pawn-detail',$item->id)}}" class="btn btn-info" ><i class="mdi mdi-format-align-left"></i></a>
+                                            <!-- <button type="button" class="btn btn-primary dropdown-toggle waves-effect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="mdi mdi-filter-variant"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#" class="dropdown-item">Dropdown link 1</a></li>
+                                                    <li><a href="#" class="dropdown-item">Dropdown link 2</a></li>
+                                                    <li><a href="#" class="dropdown-item">Dropdown link 3</a></li>
+                                                </ul> -->
+                                            </td>
+                                        </tr>
+                                        @empty
+                                        <tr>
+                                            <td colspan="13" class="text-center" style="font-size: 12px">
+                                                ບໍ່ມີຂໍ້ມູນລາຍການສິນເຊື່ອ</td>
+                                        </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
 
@@ -97,7 +159,7 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <span><br> ລວມຫຼັກຊັບທັງໝົດ <span class="text-danger">0</span> ລາຍການ</span>
+                        <span><br> ລວມຫຼັກຊັບທັງໝົດ <span class="text-danger">{{$count}}</span> ລາຍການ</span>
                     </div>
                 </div>
             </div>

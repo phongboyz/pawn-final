@@ -19,8 +19,8 @@
             <div class="card-box">
                 <div class="row">
                     <div class="col-12">
-                        <button class="btn btn-info phetsarath-font"><i class="mdi mdi-file-document-box-outline"></i>
-                            ສັນຍາຊວດຈຳ</button>
+                        <a href="{{route('pdf-bill-pawn',$pawnid)}}" target="_bank" class="btn btn-info phetsarath-font"><i class="mdi mdi-file-document-box-outline"></i>
+                            ສັນຍາຊວດຈຳ</a>
                         <button class="btn btn-primary phetsarath-font"><i class="mdi mdi-file-table-box-multiple-outline"></i>
                             ແຜນການຊຳລະ</button>
                         <button class="btn btn-orange phetsarath-font"><i class="mdi mdi-cash-usd-outline"></i>

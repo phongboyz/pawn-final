@@ -23,6 +23,16 @@ class Customer extends Model
         'image',
     ];
 
+    public function proname()
+    {
+        return $this->belongsTo('App\Models\Province','pro_name','id');
+    }
+
+    public function disname()
+    {
+        return $this->belongsTo('App\Models\District','dis_name','id');
+    }
+
     public function vilname()
     {
         return $this->belongsTo('App\Models\Village','vill_id','id');
