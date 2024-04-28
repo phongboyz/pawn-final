@@ -118,17 +118,17 @@
                                             </td>
                                             <td class="text-center" style="font-size: 12px">
                                                 @if ($item->status == 'p')
-                                                    ລໍຖ້າອະນຸມັດ
+                                                <span class="text-primary">ລໍຖ້າອະນຸມັດ</span>
                                                 @elseif ($item->status == 'c')
-                                                    ອະນຸມັດສຳເລັດ
+                                                <span class="text-info">ອະນຸມັດສຳເລັດ
                                                 @elseif ($item->status == 't')
-                                                    ກຳລັງເຄື່ອນໄຫວ
+                                                <span class="text-info">ກຳລັງເຄື່ອນໄຫວ
                                                 @elseif ($item->status == 'x')
-                                                    ກາຍກຳນົດ
+                                                <span class="text-orange">ກາຍກຳນົດ
                                                 @elseif ($item->status == 'f')
-                                                    ປິດງວດ
+                                                <span class="text-success">ປິດງວດ
                                                 @elseif ($item->status == 'r')
-                                                    ຍົກເລີກ
+                                                <span class="text-danger">ຍົກເລີກ
                                                 @endif
                                             </td>
                                             <td class="text-center" style="font-size: 12px">

@@ -16,7 +16,6 @@ class BillPawnController extends Controller
         // $customPaper = [0, 0, 368.50, 581.10];
         $pdfs = mb_convert_encoding(\View::make('livewire.backend.pawn.bill.bill-pawn', ['data'=>$data]), 'HTML-ENTITIES', 'UTF-8');
         return PDF::loadHtml($pdfs)->setPaper('A4', 'portrait')->stream('ສັນຍາຊວດຈຳ.pdf',array('Attachment'=>0));
-        
     }
 
     public function generatePlanPDF($id)
@@ -26,6 +25,14 @@ class BillPawnController extends Controller
         // $customPaper = [0, 0, 368.50, 581.10];
         $pdfs = mb_convert_encoding(\View::make('livewire.backend.pawn.bill.bill-plan-pawn', ['data'=>$data, 'detail'=>$detail]), 'HTML-ENTITIES', 'UTF-8');
         return PDF::loadHtml($pdfs)->setPaper('A4', 'landscape')->stream('ແຜນການຊຳລະ.pdf',array('Attachment'=>0));
-        
+    }
+
+    public function generatePayPDF($id)
+    {
+        $detail = PawnDetail::find($id);
+        $data = Pawn::find($detail->pawn_id);
+        // $customPaper = [0, 0, 368.50, 581.10];
+        $pdfs = mb_convert_encoding(\View::make('livewire.backend.pawn.bill.bill-pay-pawn', ['data'=>$data, 'detail'=>$detail]), 'HTML-ENTITIES', 'UTF-8');
+        return PDF::loadHtml($pdfs)->setPaper('A4', 'portrait')->stream('ແຜນການຊຳລະ.pdf',array('Attachment'=>0));
     }
 }

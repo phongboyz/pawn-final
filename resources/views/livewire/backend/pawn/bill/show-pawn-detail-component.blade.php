@@ -23,8 +23,8 @@
                             ສັນຍາຊວດຈຳ</a>
                         <a href="{{route('pdf-bill-plan-pawn',$pawnid)}}" target="_bank" class="btn btn-primary phetsarath-font"><i class="mdi mdi-file-table-box-multiple-outline"></i>
                             ແຜນການຊຳລະ</a>
-                        <button class="btn btn-orange phetsarath-font"><i class="mdi mdi-cash-usd-outline"></i>
-                            ຊຳລະ</button>
+                        <a href="{{route('pay-pawn',$pawnid)}}" class="btn btn-orange phetsarath-font"><i class="mdi mdi-cash-usd-outline"></i>
+                            ຊຳລະ</a>
                         <a href="{{route('create-pawn')}}" class="btn btn-pink float-right phetsarath-font"><i
                                 class="mdi mdi-backspace"></i> ກັບຄືນ</a>
                         <hr>
@@ -250,7 +250,7 @@
                                     </td>
                                     <td class="text-center" style="font-size: 14px;">{{$item->username->username}}</td>
                                     <td class="text-center" style="font-size: 14px;">
-                                    <button class="btn btn-orange"><i class="mdi mdi-file-link"></i></button>
+                                    <a href="{{route('pdf-bill-pay-pawn',$item->id)}}" target="_bank" class="btn btn-orange"><i class="mdi mdi-file-link"></i></a>
                                     </td>
                                 </tr>
                                 @php $pay_expire += $item->expire_day; $pay_moneys += $item->pay; $pay_ints += $item->int; $pay_feess += $item->fees; $pay_int_adj += $item->int_adj; $pay_discount += $item->discount; @endphp
