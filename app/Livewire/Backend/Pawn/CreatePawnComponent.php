@@ -172,7 +172,7 @@ class CreatePawnComponent extends Component
             $data->money_name = $this->moneyname;
             $data->interest = $pawn_intr;
             $data->balance = $pawn_money;
-            $data->balance_int = $pawn_intr;
+            // $data->balance_int = $pawn_intr;
             $data->interestType = $this->int_type;
             $data->adj_percent = $this->adj;
             $data->fees_percent = $this->fees;
@@ -185,6 +185,7 @@ class CreatePawnComponent extends Component
             $data->expire_date = date('Y-m-d',strtotime($date_now. ' + '. $this->days .' days'));
             $data->save();
 
+            $sum_int = 0;
             for($i = 1; $i <= $this->nguad; $i++)
             {
                 $multi_date = ($this->days / $this->nguad) * $i;
@@ -196,14 +197,16 @@ class CreatePawnComponent extends Component
                 $detail->apm_money = $pawn_money / $this->nguad;
                 if($this->int_type == 'constant'){
                     $detail->apm_int = $pawn_intr;
+                    $sum_int += $pawn_intr;
                 }else{
                     if($i == 1){
                         $detail->apm_int = (($pawn_money * $this->int) / 100) ;
+                        $sum_int += (($pawn_money * $this->int) / 100) ;
                     }else{
                         $j = $i;
                         $detail->apm_int = ((($pawn_money -(($pawn_money / $this->nguad)*($j-1))) * $this->int) / 100) ;
+                        $sum_int += ((($pawn_money -(($pawn_money / $this->nguad)*($j-1))) * $this->int) / 100) ;
                     }
-                    
                 }
                 if($i == 1){
                     $detail->apm_fees = $pawn_fees;
@@ -216,9 +219,8 @@ class CreatePawnComponent extends Component
                 $detail->save();
 
                 $all_interest += $pawn_intr; 
-
             }
-
+            Pawn::where('id',$data->id)->update(['balance_int'=>$sum_int]);
             session()->flash('success', 'ສ້າງສັນຍາສິນເຊື່ອສຳເລັດ');
             return redirect(route('pawn-detail', $data->id));
 

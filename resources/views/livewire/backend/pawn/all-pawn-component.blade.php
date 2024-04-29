@@ -120,15 +120,15 @@
                                                 @if ($item->status == 'p')
                                                 <span class="text-primary">ລໍຖ້າອະນຸມັດ</span>
                                                 @elseif ($item->status == 'c')
-                                                <span class="text-info">ອະນຸມັດສຳເລັດ
+                                                <span class="text-info">ອະນຸມັດສຳເລັດ</span>
                                                 @elseif ($item->status == 't')
-                                                <span class="text-info">ກຳລັງເຄື່ອນໄຫວ
+                                                <span class="text-info">ກຳລັງເຄື່ອນໄຫວ</span>
                                                 @elseif ($item->status == 'x')
-                                                <span class="text-orange">ກາຍກຳນົດ
+                                                <span class="text-orange">ກາຍກຳນົດ</span>
                                                 @elseif ($item->status == 'f')
-                                                <span class="text-success">ປິດງວດ
+                                                <span class="text-success">ປິດງວດ</span>
                                                 @elseif ($item->status == 'r')
-                                                <span class="text-danger">ຍົກເລີກ
+                                                <span class="text-danger">ຍົກເລີກ</span>
                                                 @endif
                                             </td>
                                             <td class="text-center" style="font-size: 12px">
