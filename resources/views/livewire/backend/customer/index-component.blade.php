@@ -216,7 +216,9 @@
                                             <td>
                                                 {{$item->count_sv}}
                                             </td>
-                                            <td>{{$item->name}} {{$item->lname}}</td>
+                                            <td>
+                                                @if($item->gender == 'f') ນາງ @else ທ້າວ @endif    
+                                            {{$item->name}} {{$item->lname}}</td>
                                             <td>{{$item->phone}}</td>
                                             <td>{{$item->address}}</td>
                                             <td>

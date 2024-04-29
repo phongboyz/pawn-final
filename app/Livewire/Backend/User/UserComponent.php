@@ -7,7 +7,6 @@ use App\Models\User;
 use App\Exports\UsersExport;
 use Livewire\WithFileUploads;
 
-
 class UserComponent extends Component
 {
     use WithFileUploads;

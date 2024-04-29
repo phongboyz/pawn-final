@@ -60,12 +60,11 @@
                         <i class="mdi mdi-settings-outline"></i>ຂໍ້ມູນແຫຼ່ງທຶນ
                     </a>
                     <ul class="submenu megamenu">
-
                         <li>
                             <ul>
                                 <li><a href="{{route('currency')}}">ສະກຸນເງິນ</a></li>
-                                <li><a href="page-starter.html">ແຫຼ່ງທຶນ</a></li>
-                                <li><a href="page-login.html">ລາຍງານແຫຼ່ງທຶນ</a></li>
+                                <li><a href="{{route('so-cost')}}">ແຫຼ່ງທຶນ</a></li>
+                                <li><a href="{{route('report-cost')}}">ລາຍງານແຫຼ່ງທຶນ</a></li>
                             </ul>
                         </li>
 

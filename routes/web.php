@@ -44,7 +44,11 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::get('/pdf-bill-pawn/{id}', [App\Http\Controllers\Pawn\BillPawnController::class, 'generatePDF'])->name('pdf-bill-pawn');
     Route::get('/pdf-bill-plan-pawn/{id}', [App\Http\Controllers\Pawn\BillPawnController::class, 'generatePlanPDF'])->name('pdf-bill-plan-pawn');
     Route::get('/pdf-bill-pay-pawn/{id}', [App\Http\Controllers\Pawn\BillPawnController::class, 'generatePayPDF'])->name('pdf-bill-pay-pawn');
-    
+
+    //Cost
+    Route::get('/so-cost', App\Livewire\Backend\Cost\SoCostComponent::class)->name('so-cost');
+    Route::get('/report-cost', App\Livewire\Backend\Cost\ReportCostComponent::class)->name('report-cost');
+
     //Pay
     Route::get('/pay-pawn/{id}', App\Livewire\Backend\Pawn\Pay\PayComponent::class)->name('pay-pawn');
 
