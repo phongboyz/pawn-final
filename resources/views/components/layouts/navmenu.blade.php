@@ -34,7 +34,7 @@
                 </li>
 
                 <li class="has-submenu">
-                    <a href="#">
+                    <a href="#" class="waves-effect waves-light">
                         <i class="mdi mdi-diamond-stone"></i>ການບໍລິການ
                     </a>
                     <ul class="submenu megamenu">

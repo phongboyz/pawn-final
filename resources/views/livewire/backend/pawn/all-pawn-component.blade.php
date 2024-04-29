@@ -45,7 +45,7 @@
                         <!-- <input type="date" name="date" id="date" wire:model="dateS" class="form-control"> -->
                     </div>
                     <div class="col-2">
-                        <input type="text" name="search" id="search" wire:model="search" class="form-control"
+                        <input type="text" name="search" id="search" wire:model="search" wire:keydown.enter="searchData" class="form-control"
                             placeholder="ຄົ້ນຫາ">
                     </div>
                     <div class="col-1 ">

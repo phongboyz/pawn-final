@@ -23,9 +23,19 @@
                             ສັນຍາຊວດຈຳ</a>
                         <a href="{{route('pdf-bill-plan-pawn',$pawnid)}}" target="_bank" class="btn btn-primary phetsarath-font"><i class="mdi mdi-file-table-box-multiple-outline"></i>
                             ແຜນການຊຳລະ</a>
+                        @if($transection_id)
                         <a href="{{route('pay-pawn',$pawnid)}}" class="btn btn-orange phetsarath-font"><i class="mdi mdi-cash-usd-outline"></i>
                             ຊຳລະ</a>
-                        <a href="{{route('create-pawn')}}" class="btn btn-pink float-right phetsarath-font"><i
+                        @endif
+                        @if ($pending_id)
+                        <button class="btn btn-teal  phetsarath-font" wire:click="confirm">
+                            <i class="mdi mdi-file-document-box-check"></i> ອະນຸມັດ
+                        </button>
+                        <button class="btn btn-danger  phetsarath-font" wire:click="reject">
+                            <i class="mdi mdi-sort-variant-remove"></i> ບໍ່ອະນຸມັດ
+                        </button>
+                        @endif
+                        <a href="{{ url()->previous() }}" class="btn btn-pink float-right phetsarath-font"><i
                                 class="mdi mdi-backspace"></i> ກັບຄືນ</a>
                         <hr>
                     </div>
