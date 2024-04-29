@@ -161,7 +161,7 @@ class CreatePawnComponent extends Component
             $pawn_code = new PawnCode();
             $pawn_code->name = auth()->user()->branchname->code;
             $pawn_code->save();
-            $code = PawnCode::where('name', $pawn_code->name)->orderBy('number','desc')->first();
+            $code = PawnCode::where('name', $pawn_code->name)->where('number',$pawn_code->number)->orderBy('number','desc')->first();
 
             $data = new Pawn();
             $data->code = $code->name.'-'.$code->number;
@@ -220,6 +220,11 @@ class CreatePawnComponent extends Component
 
                 $all_interest += $pawn_intr; 
             }
+            
+            $cus = Customer::find($this->cusid);
+            $cus->count_sv += 1;
+            $cus->save();
+
             Pawn::where('id',$data->id)->update(['balance_int'=>$sum_int]);
             session()->flash('success', 'ສ້າງສັນຍາສິນເຊື່ອສຳເລັດ');
             return redirect(route('pawn-detail', $data->id));
