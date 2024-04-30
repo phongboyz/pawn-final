@@ -85,7 +85,6 @@
                                 <li><a href="{{route('report-customer')}}">ລາຍງານສະຖິຕິສິນເຊື່ອລູກຄ້າ</a></li>
                             </ul>
                         </li>
-
                     </ul>
                 </li>
 
