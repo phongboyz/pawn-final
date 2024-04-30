@@ -78,11 +78,11 @@
                     <ul class="submenu megamenu">
                         <li>
                             <ul>
-                                <li><a href="extras-profile.html">ລາຍງານຖານະການເງິນ</a></li>
-                                <li><a href="extras-sitemap.html">ລາຍງານບັນຊີປະຈຳວັນ</a></li>
-                                <li><a href="extras-contact.html">ລາຍງານຂໍ້ມູນສິນເຊື່ອທັງໝົດ</a></li>
-                                <li><a href="extras-members.html">ລາຍງານສິຖິຕິຫຼັກຊັບ</a></li>
-                                <li><a href="extras-timeline.html">ລາຍງານສະຖິຕິສິນເຊື່ອລູກຄ້າ</a></li>
+                                <li><a href="{{route('report-financail')}}">ລາຍງານຖານະການເງິນ</a></li>
+                                <li><a href="{{route('report-daily-bankroll')}}">ລາຍງານບັນຊີປະຈຳວັນ</a></li>
+                                <li><a href="{{route('report-all-pawn')}}">ລາຍງານຂໍ້ມູນສິນເຊື່ອທັງໝົດ</a></li>
+                                <li><a href="{{route('report-product')}}">ລາຍງານສິຖິຕິຫຼັກຊັບ</a></li>
+                                <li><a href="{{route('report-customer')}}">ລາຍງານສະຖິຕິສິນເຊື່ອລູກຄ້າ</a></li>
                             </ul>
                         </li>
 

@@ -45,12 +45,19 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::get('/pdf-bill-plan-pawn/{id}', [App\Http\Controllers\Pawn\BillPawnController::class, 'generatePlanPDF'])->name('pdf-bill-plan-pawn');
     Route::get('/pdf-bill-pay-pawn/{id}', [App\Http\Controllers\Pawn\BillPawnController::class, 'generatePayPDF'])->name('pdf-bill-pay-pawn');
 
+    //Pay
+    Route::get('/pay-pawn/{id}', App\Livewire\Backend\Pawn\Pay\PayComponent::class)->name('pay-pawn');
+
     //Cost
     Route::get('/so-cost', App\Livewire\Backend\Cost\SoCostComponent::class)->name('so-cost');
     Route::get('/report-cost', App\Livewire\Backend\Cost\ReportCostComponent::class)->name('report-cost');
 
-    //Pay
-    Route::get('/pay-pawn/{id}', App\Livewire\Backend\Pawn\Pay\PayComponent::class)->name('pay-pawn');
+    //Report
+    Route::get('/report-financail', App\Livewire\Backend\Report\ReportFinancailComponent::class)->name('report-financail');
+    Route::get('/report-daily-bankroll', App\Livewire\Backend\Report\ReportDailyBankrollComponent::class)->name('report-daily-bankroll');
+    Route::get('/report-all-pawn', App\Livewire\Backend\Report\ReportAllPawnComponent::class)->name('report-all-pawn');
+    Route::get('/report-product', App\Livewire\Backend\Report\ReportProductComponent::class)->name('report-product');
+    Route::get('/report-customer', App\Livewire\Backend\Report\ReportCustomerComponent::class)->name('report-customer');
 
     //Setting
     Route::get('/currencies', App\Livewire\Backend\Currency\IndexComponent::class)->name('currency');
