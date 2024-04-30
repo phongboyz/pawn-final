@@ -80,7 +80,6 @@
                             <ul>
                                 <li><a href="extras-profile.html">ລາຍງານຖານະການເງິນ</a></li>
                                 <li><a href="extras-sitemap.html">ລາຍງານບັນຊີປະຈຳວັນ</a></li>
-                                <li><a href="extras-about.html">ລາຍງານລາຍຮັບ-ລາຍຈ່າຍ</a></li>
                                 <li><a href="extras-contact.html">ລາຍງານຂໍ້ມູນສິນເຊື່ອທັງໝົດ</a></li>
                                 <li><a href="extras-members.html">ລາຍງານສິຖິຕິຫຼັກຊັບ</a></li>
                                 <li><a href="extras-timeline.html">ລາຍງານສະຖິຕິສິນເຊື່ອລູກຄ້າ</a></li>

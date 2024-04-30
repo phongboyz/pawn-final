@@ -27,7 +27,7 @@
                                             class="btn waves-effect waves-light btn-primary phetsarath-font">ສາຂາ</button>
                                     </span>
                                     <select class="form-control" name="branch_id" id="branch_id" wire:model="branch_id">
-                                        <option value="">ກະລຸນາເລືອກສາຂາ</option>
+                                        <option value="">ສະແດງທັງໝົດ</option>
                                         @foreach ($branchs as $item)
                                         <option value="{{$item->id}}">{{$item->name}}</option>
                                         @endforeach
