@@ -238,7 +238,7 @@
                             @php $pay_expire=0; $pay_moneys=0;$pay_ints=0;$pay_feess=0;$pay_int_adj=0;$pay_discount=0; @endphp
                             @foreach ($detailf as $item)
                                 <tr>
-                                    <td class="text-center" style="font-size: 14px;">{{$item->nguad}}</td>
+                                    <td class="text-center" style="font-size: 14px;">{{$item->apm_count}}</td>
                                     <td class="text-center" style="font-size: 14px;">{{date('d-m-Y',strtotime($item->pay_date))}}</td>
                                     <td class="text-center" style="font-size: 14px;">{{$item->expire_day}}</td>
                                     <td class="text-center" style="font-size: 14px;">{{number_format($item->pay,2,',','.')}}</td>
