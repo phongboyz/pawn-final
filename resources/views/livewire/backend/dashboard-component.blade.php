@@ -5,12 +5,11 @@
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Zircos</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard </a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <!-- <li class="breadcrumb-item"><a href="javascript: void(0);">ໜ້າຫຼັກ</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">ໜ້າຫຼັກ</a></li> -->
                     </ol>
                 </div>
-                <h4 class="page-title">Dashboard</h4>
+                <!-- <h4 class="page-title">ໜ້າຫຼັກ</h4> -->
             </div>
         </div>
     </div>
@@ -21,13 +20,13 @@
             <div class="card widget-box-three">
                 <div class="card-body">
                     <div class="float-right mt-2">
-                        <i class="mdi mdi-chart-areaspline display-3 m-0"></i>
+                        <i class="mdi mdi-file-document-outline display-3 m-0 text-primary"></i>
                     </div>
                     <div class="overflow-hidden">
-                        <p class="text-uppercase font-weight-medium text-truncate mb-2">Statistics</p>
+                        <p class="text-uppercase font-weight-medium text-truncate mb-2">ຈຳນວນປ່ອຍສິນເຊື່ອທັງໝົດ</p>
                         <h2 class="mb-0"><span data-plugin="counterup">34578</span> <i
                                 class="mdi mdi-arrow-up text-success font-24"></i></h2>
-                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">Last:</span> 30.4k</p>
+                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span> 30. ລາຍການ</p>
                     </div>
                 </div>
             </div>
@@ -38,13 +37,13 @@
             <div class="card widget-box-three">
                 <div class="card-body">
                     <div class="float-right mt-2">
-                        <i class="mdi mdi-account-convert display-3 m-0"></i>
+                        <i class="mdi mdi-file-document-outline display-3 m-0 text-warning"></i>
                     </div>
                     <div class="overflow-hidden">
-                        <p class="text-uppercase font-weight-medium text-truncate mb-2">User Today</p>
+                        <p class="text-uppercase font-weight-medium text-truncate mb-2">ຈຳນວນສິນເຊື່ອຄ້າງຊຳລະ</p>
                         <h2 class="mb-0"><span data-plugin="counterup">895</span> <i
                                 class="mdi mdi-arrow-down text-danger font-24"></i></h2>
-                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">Last:</span> 1250</p>
+                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span> ລາຍການ</p>
                     </div>
 
                 </div>
@@ -56,13 +55,13 @@
             <div class="card widget-box-three">
                 <div class="card-body">
                     <div class="float-right mt-2">
-                        <i class="mdi mdi-layers display-3 m-0"></i>
+                        <i class="mdi mdi-file-document-outline display-3 m-0 text-danger"></i>
                     </div>
                     <div class="overflow-hidden">
-                        <p class="text-uppercase font-weight-medium text-truncate mb-2">User This Month</p>
+                        <p class="text-uppercase font-weight-medium text-truncate mb-2">ຈຳນວນສິນເຊື່ອກາຍກຳນົດ</p>
                         <h2 class="mb-0"><span data-plugin="counterup">52410</span><i
-                                class="mdi mdi-arrow-up text-success font-24"></i></h2>
-                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">Last:</span> 40.33k</p>
+                                class="mdi mdi-arrow-down text-danger font-24"></i></h2>
+                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span> 40.ລາຍການ</p>
                     </div>
                 </div>
             </div>
@@ -73,13 +72,13 @@
             <div class="card widget-box-three">
                 <div class="card-body">
                     <div class="float-right mt-2">
-                        <i class="mdi mdi-av-timer display-3 m-0"></i>
+                        <i class="mdi mdi-file-document-outline display-3 m-0 text-success"></i>
                     </div>
                     <div class="overflow-hidden">
-                        <p class="text-uppercase font-weight-medium text-truncate mb-2">Request Per Minute</p>
+                        <p class="text-uppercase font-weight-medium text-truncate mb-2">ຈຳນວນສິນເຊື່ອຊຳລະສຳເລັດ</p>
                         <h2 class="mb-0"><span data-plugin="counterup">652</span> <i
-                                class="mdi mdi-arrow-down text-danger font-24"></i></h2>
-                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">Last:</span> 956</p>
+                                class="mdi mdi-arrow-up text-success font-24"></i></h2>
+                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span> ລາຍການ</p>
                     </div>
 
                 </div>
@@ -89,92 +88,29 @@
     </div>
     <!-- end row -->
 
-    
+
     <div class="row">
         <div class="col-xl-6">
             <div class="card-box">
-                <h4 class="header-title mb-4">Recent Users</h4>
+                <h4 class="header-title mb-4">ລາຍການສິນເຊື່ອກາຍກຳນົດ</h4>
 
                 <div class="table-responsive">
                     <table class="table table-hover table-centered m-0">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>User Name</th>
-                                <th>Phone</th>
-                                <th>Location</th>
-                                <th>Date</th>
+                                <th class="text-center" style="font-size: 14px;">ງວດ</th>
+                                <th class="text-center" style="font-size: 14px;">ຂໍ້ມູນລູກຄ້າ</th>
+                                <th class="text-center" style="font-size: 14px;">ວັນຄົບກຳນົດ</th>
+                                <th class="text-center" style="font-size: 14px;">ຕົ້ນທຶນຕໍ່ງວດ</th>
+                                <th class="text-center" style="font-size: 14px;">ດອກເບ້ຍ</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th>
-                                    <img src="{{asset('backend/assets/images/users/avatar-1.jpg')}}" alt="user"
-                                        class="avatar-sm rounded-circle">
-                                </th>
-                                <td>
-                                    <h5 class="m-0 font-15">Louis Hansen</h5>
-                                    <p class="m-0 text-muted"><small>Web designer</small></p>
-                                </td>
-                                <td>+12 3456 789</td>
-                                <td>USA</td>
-                                <td>07/08/2016</td>
-                            </tr>
 
                             <tr>
-                                <th>
-                                    <img src="{{asset('backend/assets/images/users/avatar-2.jpg')}}" alt="user"
-                                        class="avatar-sm rounded-circle">
-                                </th>
-                                <td>
-                                    <h5 class="m-0 font-15">Craig Hause</h5>
-                                    <p class="m-0 text-muted"><small>Programmer</small></p>
+                                <td colspan="5" class="p-2 text-center"
+                                    style="background-color: #CECECE;font-size: 14px;">ບໍ່ມີຂໍ້ມູນ
                                 </td>
-                                <td>+89 345 6789</td>
-                                <td>Canada</td>
-                                <td>29/07/2016</td>
-                            </tr>
-
-                            <tr>
-                                <th>
-                                    <img src="{{asset('backend/assets/images/users/avatar-3.jpg')}}" alt="user"
-                                        class="avatar-sm rounded-circle">
-                                </th>
-                                <td>
-                                    <h5 class="m-0 font-15">Edward Grimes</h5>
-                                    <p class="m-0 text-muted"><small>Founder</small></p>
-                                </td>
-                                <td>+12 29856 256</td>
-                                <td>Brazil</td>
-                                <td>22/07/2016</td>
-                            </tr>
-
-                            <tr>
-                                <th>
-                                    <img src="{{asset('backend/assets/images/users/avatar-4.jpg')}}" alt="user"
-                                        class="avatar-sm rounded-circle">
-                                </th>
-                                <td>
-                                    <h5 class="m-0 font-15">Bret Weaver</h5>
-                                    <p class="m-0 text-muted"><small>Web designer</small></p>
-                                </td>
-                                <td>+00 567 890</td>
-                                <td>USA</td>
-                                <td>20/07/2016</td>
-                            </tr>
-
-                            <tr>
-                                <th>
-                                    <img src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="user"
-                                        class="avatar-sm rounded-circle">
-                                </th>
-                                <td>
-                                    <h5 class="m-0 font-15">Mark</h5>
-                                    <p class="m-0 text-muted"><small>Web design</small></p>
-                                </td>
-                                <td>+91 123 456</td>
-                                <td>India</td>
-                                <td>07/07/2016</td>
                             </tr>
 
                         </tbody>
@@ -189,95 +125,31 @@
 
         <div class="col-xl-6">
             <div class="card-box">
-                <h4 class="header-title mb-4">Recent Users</h4>
-
+                <h4 class="header-title mb-4">ເສັ້ນສະແດງ</h4>
                 <div class="table-responsive">
-                    <table class="table table-hover table-centered m-0">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>User Name</th>
-                                <th>Phone</th>
-                                <th>Location</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>
-                                    <span class="avatar-sm-box bg-success">L</span>
-                                </th>
-                                <td>
-                                    <h5 class="m-0 font-15">Louis Hansen</h5>
-                                    <p class="m-0 text-muted"><small>Web designer</small></p>
-                                </td>
-                                <td>+12 3456 789</td>
-                                <td>USA</td>
-                                <td>07/08/2016</td>
-                            </tr>
 
-                            <tr>
-                                <th>
-                                    <span class="avatar-sm-box bg-primary">C</span>
-                                </th>
-                                <td>
-                                    <h5 class="m-0 font-15">Craig Hause</h5>
-                                    <p class="m-0 text-muted"><small>Programmer</small></p>
-                                </td>
-                                <td>+89 345 6789</td>
-                                <td>Canada</td>
-                                <td>29/07/2016</td>
-                            </tr>
-
-                            <tr>
-                                <th>
-                                    <span class="avatar-sm-box bg-brown">E</span>
-                                </th>
-                                <td>
-                                    <h5 class="m-0 font-15">Edward Grimes</h5>
-                                    <p class="m-0 text-muted"><small>Founder</small></p>
-                                </td>
-                                <td>+12 29856 256</td>
-                                <td>Brazil</td>
-                                <td>22/07/2016</td>
-                            </tr>
-
-                            <tr>
-                                <th>
-                                    <span class="avatar-sm-box bg-pink">B</span>
-                                </th>
-                                <td>
-                                    <h5 class="m-0 font-15">Bret Weaver</h5>
-                                    <p class="m-0 text-muted"><small>Web designer</small></p>
-                                </td>
-                                <td>+00 567 890</td>
-                                <td>USA</td>
-                                <td>20/07/2016</td>
-                            </tr>
-
-                            <tr>
-                                <th>
-                                    <span class="avatar-sm-box bg-orange">M</span>
-                                </th>
-                                <td>
-                                    <h5 class="m-0 font-15">Mark</h5>
-                                    <p class="m-0 text-muted"><small>Web design</small></p>
-                                </td>
-                                <td>+91 123 456</td>
-                                <td>India</td>
-                                <td>07/07/2016</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
+                    <div class="widget-chart text-center">
+                        <div id="morris-donut-example" class="morris-charts" style="height: 245px;"></div>
+                        <ul class="list-inline chart-detail-list mb-0">
+                            <li class="list-inline-item">
+                                <h6 class="text-danger"><i class="fa fa-circle mr-2"></i>Series A</h6>
+                            </li>
+                            <li class="list-inline-item">
+                                <h6 class="text-success"><i class="fa fa-circle mr-2"></i>Series B</h6>
+                            </li>
+                        </ul>
+                    </div>
 
                 </div>
-                <!-- table-responsive -->
             </div>
-            <!-- end card -->
         </div>
         <!-- end col -->
 
     </div>
     <!-- end row -->
 </div>
+
+@push('scripts')
+<script src="{{asset('backend/assets/libs/morris-js/morris.min.js')}}"></script>
+<script src="{{asset('backend/assets/js/pages/morris.init.js')}}"></script>
+@endpush

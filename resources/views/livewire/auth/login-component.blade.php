@@ -9,7 +9,7 @@
                     <div class="mb-4">
                         <h1 class="boonhome-font">ຍິນດີຕ້ອນຮັບ <strong>ລະບົບໂຮງຊວດຈຳ</strong></h1>
                         <p class="mb-4 boonhome-font" style="font-size: 20px;">ລະບົບ ການຈັດການຂໍ້ມູນ ແລະ ຕິດຕາມການຊຳລະ
-                            ກ່ຽວກັບການບໍລິການຂອງໂຮງຊວດຈຳ.</p>
+                            ຂອງໂຮງຊວດຈຳ.</p>
                     </div>
                     <div class="form-group first">
                         <label for="username">

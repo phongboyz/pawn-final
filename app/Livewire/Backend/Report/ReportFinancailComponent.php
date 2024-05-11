@@ -12,7 +12,7 @@ class ReportFinancailComponent extends Component
 {
     public $branchs, $data = [];
     public $branch_id, $start, $end, $type;
-    public $show = 'none';
+    public $show = 'show';
     public $pdf;
 
     public function mount(){
