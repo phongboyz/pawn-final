@@ -24,9 +24,9 @@
                     </div>
                     <div class="overflow-hidden">
                         <p class="text-uppercase font-weight-medium text-truncate mb-2">ຈຳນວນປ່ອຍສິນເຊື່ອທັງໝົດ</p>
-                        <h2 class="mb-0"><span data-plugin="counterup">34578</span> <i
+                        <h2 class="mb-0"><span data-plugin="counterup">{{$pawn_one}}</span> <i
                                 class="mdi mdi-arrow-up text-success font-24"></i></h2>
-                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span> 30. ລາຍການ</p>
+                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span> {{$pawn_one}} ລາຍການ</p>
                     </div>
                 </div>
             </div>
@@ -41,9 +41,9 @@
                     </div>
                     <div class="overflow-hidden">
                         <p class="text-uppercase font-weight-medium text-truncate mb-2">ຈຳນວນສິນເຊື່ອຄ້າງຊຳລະ</p>
-                        <h2 class="mb-0"><span data-plugin="counterup">895</span> <i
+                        <h2 class="mb-0"><span data-plugin="counterup">{{$pawn_two}}</span> <i
                                 class="mdi mdi-arrow-down text-danger font-24"></i></h2>
-                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span> ລາຍການ</p>
+                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span> {{$pawn_two}} ລາຍການ</p>
                     </div>
 
                 </div>
@@ -59,9 +59,9 @@
                     </div>
                     <div class="overflow-hidden">
                         <p class="text-uppercase font-weight-medium text-truncate mb-2">ຈຳນວນສິນເຊື່ອກາຍກຳນົດ</p>
-                        <h2 class="mb-0"><span data-plugin="counterup">52410</span><i
+                        <h2 class="mb-0"><span data-plugin="counterup">{{$pawn_three}}</span><i
                                 class="mdi mdi-arrow-down text-danger font-24"></i></h2>
-                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span> 40.ລາຍການ</p>
+                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span> {{$pawn_three}} ລາຍການ</p>
                     </div>
                 </div>
             </div>
@@ -76,9 +76,9 @@
                     </div>
                     <div class="overflow-hidden">
                         <p class="text-uppercase font-weight-medium text-truncate mb-2">ຈຳນວນສິນເຊື່ອຊຳລະສຳເລັດ</p>
-                        <h2 class="mb-0"><span data-plugin="counterup">652</span> <i
+                        <h2 class="mb-0"><span data-plugin="counterup">{{$pawn_four}}</span> <i
                                 class="mdi mdi-arrow-up text-success font-24"></i></h2>
-                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span> ລາຍການ</p>
+                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span> {{$pawn_four}} ລາຍການ</p>
                     </div>
 
                 </div>
@@ -106,13 +106,24 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @forelse ($pawn_data_pay as $item)
+                                <tr>
+                                    <td class="text-center" style="font-size: 14px;">{{$item->apm_count}}</td>
+                                    <td class="text-center">@if($item->pawnname->cusname->gender == 'm') ທ້າວ @else ນາງ @endif {{$item->pawnname->cusname->name}} {{$item->pawnname->cusname->phone}}</td>
+                                    <td class="text-center" style="font-size: 14px;">
+                                        {{date('d-m-Y',strtotime($item->apm_date))}}</td>
+                                    <td class="text-center" style="font-size: 14px;">
+                                        {{number_format($item->apm_money,2,',','.')}}</td>
+                                    <td class="text-center" style="font-size: 14px;">
+                                        {{number_format($item->apm_int,2,',','.')}}</td>
+                                </tr>
+                            @empty
                             <tr>
                                 <td colspan="5" class="p-2 text-center"
                                     style="background-color: #CECECE;font-size: 14px;">ບໍ່ມີຂໍ້ມູນ
                                 </td>
                             </tr>
-
+                            @endforelse
                         </tbody>
                     </table>
 
@@ -125,22 +136,10 @@
 
         <div class="col-xl-6">
             <div class="card-box">
-                <h4 class="header-title mb-4">ເສັ້ນສະແດງ</h4>
-                <div class="table-responsive">
-
-                    <div class="widget-chart text-center">
-                        <div id="morris-donut-example" class="morris-charts" style="height: 245px;"></div>
-                        <ul class="list-inline chart-detail-list mb-0">
-                            <li class="list-inline-item">
-                                <h6 class="text-danger"><i class="fa fa-circle mr-2"></i>Series A</h6>
-                            </li>
-                            <li class="list-inline-item">
-                                <h6 class="text-success"><i class="fa fa-circle mr-2"></i>Series B</h6>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
+                <center>
+                    <h4 class="header-title mb-4" style="color: black; font-family: 'Phetsarath OT';"><u><b>ເສັ້ນສະແດງຍອດສິນເຊື່ອຕາມສະຖານະ</b></u></h4>
+                    <div id="chart"></div>
+                </center>
             </div>
         </div>
         <!-- end col -->
@@ -149,7 +148,4 @@
     <!-- end row -->
 </div>
 
-@push('scripts')
-<script src="{{asset('backend/assets/libs/morris-js/morris.min.js')}}"></script>
-<script src="{{asset('backend/assets/js/pages/morris.init.js')}}"></script>
-@endpush
+@include('livewire.backend.dashboard-js')
