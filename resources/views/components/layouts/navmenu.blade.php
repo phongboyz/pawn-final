@@ -87,7 +87,7 @@
                         </li>
                     </ul>
                 </li>
-
+                @if(auth()->user()->rolename->name == 'admin')
                 <li class="has-submenu">
                     <a href="#"> <i class="mdi mdi-monitor-speaker"></i>ຂໍ້ມູນໃຊ້ງານລະບົບ
                     </a>
@@ -97,7 +97,7 @@
                         <li><a href="{{route('branch')}}">ຂໍ້ມູນສາຂາ</a></li>
                     </ul>
                 </li>
-
+                @endif
             </ul>
             <!-- End navigation menu -->
 

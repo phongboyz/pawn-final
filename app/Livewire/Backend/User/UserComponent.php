@@ -20,6 +20,12 @@ class UserComponent extends Component
     public $addId;
     public $roles, $branchs;
 
+    public function mount(){
+        if(auth()->user()->rolename->name != 'admin'){
+            return redirect('dashboard');
+        }
+    }
+
     public function render()
     {
         $this->roles = Role::select('id','name')->get();

@@ -8,11 +8,17 @@ use App\Models\Role;
 class IndexComponent extends Component
 {
     public $data, $count;
-    public $code, $name, $tel, $address, $location, $sig1, $sig2, $sig3, $sig4, $logo, $logos;
     public $editId, $delId, $delName;
     public $search, $dataQ = 15, $dateS, $dateE;
     public $form, $ignore_add = 0;
     public $addId;
+    public $name, $selectedtypes = [], $select = [];
+
+    public function mount(){
+        if(auth()->user()->rolename->name != 'admin'){
+            return redirect('dashboard');
+        }
+    }
 
     public function render()
     {
@@ -62,14 +68,21 @@ class IndexComponent extends Component
             'name.required'=>'ກະລຸນາປ້ອນ ຊື່ສິດການເຂົ້າເຖິງກ່ອນ ກ່ອນ!',
         ]);
 
+        foreach($this->selectedtypes as $item){
+            $d = array_push($this->select, $item);
+        }
+        $con = implode(",",$this->select);
+
         if($this->editId){
             Role::where('id',$this->editId)->update([
                 'name'=>$this->name,
+                'permission'=>$con
             ]);
             session()->flash('success', 'ອັບເດດຂໍ້ມູນສຳເລັດ');
         }else{
             Role::insert([
                 'name'=>$this->name,
+                'permission'=>$con
             ]);
             session()->flash('success', 'ບັນທຶກຂໍ້ມູນສຳເລັດ');
         }
@@ -82,6 +95,10 @@ class IndexComponent extends Component
         $this->editId = $ids;
         $data = Role::find($ids);
         $this->name = $data->name;
+        $arr = explode(',',$data->permission);
+        foreach($arr as $item){
+            $d = array_push($this->selectedtypes, $item);
+        }
     }
 
     public function delete($ids){

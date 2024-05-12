@@ -16,6 +16,12 @@ class IndexComponent extends Component
     public $form, $ignore_add = 0;
     public $addId;
 
+    public function mount(){
+        if(auth()->user()->rolename->name != 'admin'){
+            return redirect('dashboard');
+        }
+    }
+
     public function render()
     {
         $this->data = Branch::whereAny(['code','name','tel'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->get();
