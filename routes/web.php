@@ -73,5 +73,6 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::get('/users', App\Livewire\Backend\User\UserComponent::class)->name('user');
     Route::get('/branchs', App\Livewire\Backend\Branch\IndexComponent::class)->name('branch');
 
+    Route::get('/profiles', App\Livewire\Auth\ProfileComponent::class)->name('profiles');
     Route::get('/logout', App\Livewire\Auth\LoginComponent::class,'logout')->name('logout');
 });
