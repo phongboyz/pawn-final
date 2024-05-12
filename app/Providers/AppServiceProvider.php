@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         $count_pending = Pawn::where('status','p')->count();
-        View::share(['count_pending'=>$count_pending]);
+        $data_pending = Pawn::where('status','p')->limit(3)->get();
+        View::share(['count_pending'=>$count_pending, 'data_pending'=>$data_pending]);
     }
 }
