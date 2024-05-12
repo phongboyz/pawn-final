@@ -14,6 +14,7 @@
         </div>
     </div>
 
+    @if(!empty($data_role['addPro']))
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -137,6 +138,7 @@
             </div>
         </div>
     </div>
+    @endif
 
     <div class="row">
         <div class="col-sm-12">
@@ -198,7 +200,9 @@
                                             <th> ຊື່ສິນຄ້າ </th>
                                             <th> ຫົວໜ່ວຍ </th>
                                             <th> ລາຍລະອຽດ </th>
+                                            @if(!empty($data_role['editPro']) || !empty($data_role['delPro']))
                                             <th> ປຸ່ມກົດ </th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -233,15 +237,21 @@
                                             <td>{{$item->note}}</td>
                                             <td>
                                                 <div class="btn-group btn-group-justified text-white mb-2">
+                                                @if(!empty($data_role['editPro']))
                                                     <a class="btn btn-warning waves-effect waves-light"
                                                         wire:click="edit({{$item->id}})"><i
                                                             class="mdi mdi-pencil-remove-outline"></i></a>
+                                                @endif
+                                                @if(!empty($data_role['delPro']))
                                                     <a class="btn btn-danger waves-effect waves-light"
                                                         wire:click="delete({{$item->id}})"><i
                                                             class="mdi mdi-window-close"></i></a>
+                                                @endif
+                                                @if(!empty($data_role['addPawn']))
                                                     <a class="btn btn-info waves-effect waves-light"
                                                         wire:click="sendId({{$item->id}})"><i
                                                             class="mdi mdi-send-circle"></i></a>
+                                                @endif
                                                 </div>
                                             </td>
                                         </tr>

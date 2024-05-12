@@ -404,6 +404,576 @@
                                 </div>
                                 <div class="col-2"></div>
                             </div>
+                            <div class="row">
+                                <div class="col-2 text-right">
+                                    <p class="px-4" style="padding-top: 10px;">ສ້າງສັນຍາສິນເຊື່ອ :</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-info float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-info8" value="addPawn">
+                                            <label for="input-btn-switch-info8"
+                                                class="btn btn-rounded btn-info waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເພີ່ມຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 text-right">
+                                    <p class="px-4" style="padding-top: 10px;">ສິນເຊື່ອລໍຖ້າອະນຸມັດ :</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-primary float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-primary9" value="viewPawnPend">
+                                            <label for="input-btn-switch-primary9"
+                                                class="btn btn-rounded btn-primary waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເບິ່ງຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 text-right">
+                                    <p class="px-4" style="padding-top: 10px;">ສິນເຊື່ອລໍຖ້າຊຳລະ :</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-primary float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-primary10" value="viewPawnPay">
+                                            <label for="input-btn-switch-primary10"
+                                                class="btn btn-rounded btn-primary waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເບິ່ງຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 text-right">
+                                    <p class="px-4" style="padding-top: 10px;">ສິນເຊື່ອທັງໝົດ :</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-primary float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-primary11" value="viewPawnAll">
+                                            <label for="input-btn-switch-primary11"
+                                                class="btn btn-rounded btn-primary waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເບິ່ງຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 text-right">
+                                    <p class="px-4" style="padding-top: 10px;">ສິນເຊື່ອເຄື່ອນໄຫວ :</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-primary float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-primary12" value="viewPawnTran">
+                                            <label for="input-btn-switch-primary12"
+                                                class="btn btn-rounded btn-primary waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເບິ່ງຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 text-right">
+                                    <p class="px-4" style="padding-top: 10px;">ສິນເຊື່ອກາຍກຳນົດ :</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-primary float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-primary13" value="viewPawnEx">
+                                            <label for="input-btn-switch-primary13"
+                                                class="btn btn-rounded btn-primary waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເບິ່ງຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 text-right">
+                                    <p class="px-4" style="padding-top: 10px;">ສິນເຊື່ອສຳເລັດ :</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-primary float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-primary14" value="viewPawnFinish">
+                                            <label for="input-btn-switch-primary14"
+                                                class="btn btn-rounded btn-primary waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເບິ່ງຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 text-right">
+                                    <p class="px-4" style="padding-top: 10px;">ສິນເຊື່ອຍົກເລີກ :</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-primary float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-primary15" value="viewPawnReject">
+                                            <label for="input-btn-switch-primary15"
+                                                class="btn btn-rounded btn-primary waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເບິ່ງຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 text-right">
+                                    <p class="px-4" style="padding-top: 10px;">ຂໍ້ມູນສະກຸນເງິນ :</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-primary float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-primary16" value="viewCrc">
+                                            <label for="input-btn-switch-primary16"
+                                                class="btn btn-rounded btn-primary waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເບິ່ງຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-info float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-info16" value="addCrc">
+                                            <label for="input-btn-switch-info16"
+                                                class="btn btn-rounded btn-info waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເພີ່ມຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-warning float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-warning16" value="editCrc">
+                                            <label for="input-btn-switch-warning16"
+                                                class="btn btn-rounded btn-warning waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ແກ້ໄຂຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-danger float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-danger16" value="delCrc">
+                                            <label for="input-btn-switch-danger16"
+                                                class="btn btn-rounded btn-danger waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ລົບຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 text-right">
+                                    <p class="px-4" style="padding-top: 10px;">ຂໍ້ມູນແຫຼ່ງທຶນ :</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-primary float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-primary17" value="viewCost">
+                                            <label for="input-btn-switch-primary17"
+                                                class="btn btn-rounded btn-primary waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເບິ່ງຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-info float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-info17" value="addCost">
+                                            <label for="input-btn-switch-info17"
+                                                class="btn btn-rounded btn-info waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເພີ່ມຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-warning float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-warning17" value="editCost">
+                                            <label for="input-btn-switch-warning17"
+                                                class="btn btn-rounded btn-warning waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ແກ້ໄຂຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-danger float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-danger17" value="delCost">
+                                            <label for="input-btn-switch-danger17"
+                                                class="btn btn-rounded btn-danger waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ລົບຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 text-right">
+                                    <p class="px-4" style="padding-top: 10px;">ລາຍງານແຫຼ່ງທຶນ :</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-primary float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-primary18" value="viewReportCost">
+                                            <label for="input-btn-switch-primary18"
+                                                class="btn btn-rounded btn-primary waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເບິ່ງຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 text-right">
+                                    <p class="px-4" style="padding-top: 10px;">ລາຍງານຖານະການເງິນ :</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-primary float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-primary19" value="viewReportFinan">
+                                            <label for="input-btn-switch-primary19"
+                                                class="btn btn-rounded btn-primary waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເບິ່ງຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 text-right">
+                                    <p class="px-4" style="padding-top: 10px;">ລາຍງານບັນຊີປະຈຳວັນ :</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-primary float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-primary20" value="viewReportDaily">
+                                            <label for="input-btn-switch-primary20"
+                                                class="btn btn-rounded btn-primary waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເບິ່ງຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 text-right">
+                                    <p class="px-4" style="padding-top: 10px;">ລາຍງານສິນເຊື່ອທັງໝົດ :</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-primary float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-primary21" value="viewReportPawn">
+                                            <label for="input-btn-switch-primary21"
+                                                class="btn btn-rounded btn-primary waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເບິ່ງຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 text-right">
+                                    <p class="px-4" style="padding-top: 10px;">ລາຍງານສະຖິຕິສິນຄ້າ :</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-primary float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-primary22" value="viewReportProduct">
+                                            <label for="input-btn-switch-primary22"
+                                                class="btn btn-rounded btn-primary waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເບິ່ງຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 text-right">
+                                    <p class="px-4" style="padding-top: 10px;">ລາຍງານສະຖິຕິລູກຄ້າ :</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <div class="btn-switch btn-switch-primary float-right">
+                                            <input type="checkbox" wire:model="selectedtypes" id="input-btn-switch-primary23" value="viewReportCus">
+                                            <label for="input-btn-switch-primary23"
+                                                class="btn btn-rounded btn-primary waves-effect waves-light">
+                                                <em class="fas fa-check"></em>
+                                                <strong> ເບິ່ງຂໍ້ມູນ</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <div class="form-group" style="padding-left: 170px;padding-top: 10px;">
+                                        ບໍ່ມີ
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
                         </div>
                         <div class="card-footer">
 

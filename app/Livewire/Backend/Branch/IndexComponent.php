@@ -18,7 +18,7 @@ class IndexComponent extends Component
 
     public function mount(){
         if(auth()->user()->rolename->name != 'admin'){
-            return redirect('dashboard');
+            return redirect(route('dashboard'));
         }
     }
 
