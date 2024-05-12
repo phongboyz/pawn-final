@@ -4,6 +4,8 @@ namespace App\Livewire\Backend\User;
 
 use Livewire\Component;
 use App\Models\User;
+use App\Models\Role;
+use App\Models\Branch;
 use App\Exports\UsersExport;
 use Livewire\WithFileUploads;
 
@@ -16,9 +18,11 @@ class UserComponent extends Component
     public $search, $dataQ = 15, $dateS, $dateE;
     public $form, $ignore_add = 0;
     public $addId;
+    public $roles, $branchs;
 
     public function render()
     {
+        $this->roles = Role::select('id','name')->get();
         $this->users = User::whereAny(['username','phone','branch_id'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->get();
         $this->count = User::whereAny(['username','phone','branch_id'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->count();
 

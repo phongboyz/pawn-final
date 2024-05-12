@@ -139,12 +139,14 @@
                     </div>
                 </li>
 
+                @if(auth()->user()->rolename->name == 'admin')
                 <li class="dropdown notification-list">
-                    <a href="javascript:void(0);"
+                    <a href="{{route('apps')}}"
                         class="nav-link right-bar-toggle waves-effect waves-light">
                         <i class="mdi mdi-settings-outline noti-icon"></i>
                     </a>
                 </li>
+                @endif
 
             </ul>
 
@@ -152,8 +154,8 @@
             <div class="logo-box">
                 <a href="index-1.html" class="logo text-center">
                     <span class="logo-lg">
-                        <img src="{{asset('backend/assets/images/logo.png')}}" alt="" height="30">
-                        <!-- <span class="logo-lg-text-light">Zircos</span> -->
+                        <img src="{{asset($data_app->logo)}}" alt="" height="30">
+                        <span class="logo-lg-text-light">{{$data_app->name}}</span>
                     </span>
                     <span class="logo-sm">
                         <!-- <span class="logo-sm-text-dark">Z</span> -->
