@@ -53,7 +53,7 @@
                     <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown"
                         href="#" role="button" aria-haspopup="false" aria-expanded="false">
                         <i class="mdi mdi-bell noti-icon"></i>
-                        <span class="badge badge-success rounded-circle noti-icon-badge">{{$count_pending}}</span>
+                        @if($count_pending != 0)<span class="badge badge-success rounded-circle noti-icon-badge">{{$count_pending}}</span>@endif
                         <div class="noti-dot">
                             <span class="dot"></span>
                             <span class="pulse"></span>

@@ -20,6 +20,19 @@
         <link href="{{asset('backend/assets/libs/toastr/toastr.min.css')}}" rel="stylesheet" type="text/css">
 
         <link href="{{asset('backend/assets/libs/custombox/custombox.min.css')}}" rel="stylesheet" type="text/css">
+
+        <style>
+            @font-face {
+                    font-family: 'Phetsarath OT';
+                    font-weight: normal;
+                    font-style: normal;
+                    font-variant: normal;
+                    src: url("fonts/PhetsarathOT.ttf") format('truetype');
+            }
+            * {
+                font-family: 'Phetsarath OT';
+            }
+        </style>
         @livewireStyles
     </head>
 

@@ -7,15 +7,15 @@
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="mb-4">
-                        <h1 class="boonhome-font">ຍິນດີຕ້ອນຮັບ <strong>ລະບົບໂຮງຊວດຈຳ</strong></h1>
-                        <p class="mb-4 boonhome-font" style="font-size: 20px;">ລະບົບ ການຈັດການຂໍ້ມູນ ແລະ ຕິດຕາມການຊຳລະ
+                        <h1 style="font-family: 'Phetsarath OT';">ຍິນດີຕ້ອນຮັບ <strong>ລະບົບໂຮງຊວດຈຳ</strong></h1>
+                        <p class="mb-4" style="font-size: 20px;font-family: 'Phetsarath OT';">ລະບົບ ການຈັດການຂໍ້ມູນ ແລະ ຕິດຕາມການຊຳລະ
                             ຂອງໂຮງຊວດຈຳ.</p>
                     </div>
                     <div class="form-group first">
                         <label for="username">
                             <h5 class="phetsarath-font">ຊື່ຜູ້ໃຊ້ງານ</h5>
                         </label>
-                        <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
+                        <input type="text" class="form-control phetsarath-font @error('username') is-invalid @enderror" id="username"
                             wire:model="username" wire:keydown.enter="login">
                         @error('username') <span style="color: red" class="error">{{ $message }}</span>@enderror
                     </div>
@@ -35,8 +35,8 @@
                             <div class="control__indicator"></div>
                         </label>
                     </div>
-                    <buttom type="submit" class="btn text-white btn-block btn-primary boonhome-font"
-                        wire:click="login"> <h5 class="phetsarath-font">ເຂົ້າລະບົບ</h5></buttom>
+                    <buttom type="submit" class="btn text-white btn-block btn-primary"
+                        wire:click="login"> <h5 class="phetsarath-font p-2">ເຂົ້າລະບົບ</h5></buttom>
                 </div>
             </div>
         </div>
