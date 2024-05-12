@@ -23,6 +23,7 @@ class UserComponent extends Component
     public function render()
     {
         $this->roles = Role::select('id','name')->get();
+        $this->branchs = Branch::select('id','name')->get();
         $this->users = User::whereAny(['username','phone','branch_id'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->get();
         $this->count = User::whereAny(['username','phone','branch_id'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->count();
 
@@ -118,8 +119,8 @@ class UserComponent extends Component
                 'username'=>$this->username,
                 'password'=>bcrypt($this->password),
                 'phone'=>$this->phone,
-                'role_id'=>1,
-                'branch_id'=>1,
+                'role_id'=>$this->role_id,
+                'branch_id'=>$this->branch_id,
                 'profile'=>$this->profiles
             ]);
             session()->flash('success', 'ອັບເດດຂໍ້ມູນສຳເລັດ');
@@ -139,8 +140,8 @@ class UserComponent extends Component
                 'username'=>$this->username,
                 'password'=>bcrypt($this->password),
                 'phone'=>$this->phone,
-                'role_id'=>1,
-                'branch_id'=>1,
+                'role_id'=>$this->role_id,
+                'branch_id'=>$this->branch_id,
                 'profile'=>$this->profiles
             ]);
             session()->flash('success', 'ບັນທຶກຂໍ້ມູນສຳເລັດ');

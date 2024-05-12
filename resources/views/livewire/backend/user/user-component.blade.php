@@ -71,8 +71,11 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <p>ສິດນຳໃຊ້</p>
-                                        <select class="form-control" name="role_id" id="role_id">
+                                        <select class="form-control" name="role_id" id="role_id" wire:model="role_id">
                                             <option value="">ເລືອກສິດນຳໃຊ້</option>
+                                            @foreach ($roles as $item)
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                            @endforeach
                                         </select>
                                         @error('role_id') <span style="color: red"
                                             class="error">{{ $message }}</span>@enderror
@@ -81,8 +84,11 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <p>ສາຂາ</p>
-                                        <select class="form-control" name="branch_id" id="branch_id">
+                                        <select class="form-control" name="branch_id" id="branch_id" wire:model="branch_id">
                                             <option value="">ເລືອກສາຂາ</option>
+                                            @foreach ($branchs as $item)
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                            @endforeach
                                         </select>
                                         @error('branch_id') <span style="color: red"
                                             class="error">{{ $message }}</span>@enderror
@@ -204,8 +210,8 @@
                                             <td>{{$item->username}}</td>
                                             <td>*****</td>
                                             <td>{{$item->phone}}</td>
-                                            <td>Super Admin</td>
-                                            <td>ສຳນັກງານໃຫຍ່</td>
+                                            <td>{{$item->rolename->name}}</td>
+                                            <td>{{$item->branchname->name}}</td>
                                             <td>
                                                 <div class="btn-group btn-group-justified text-white mb-2">
                                                     <a class="btn btn-warning waves-effect waves-light"
