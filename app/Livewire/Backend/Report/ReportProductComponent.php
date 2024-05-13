@@ -25,30 +25,34 @@ class ReportProductComponent extends Component
     }
 
     public function searchData(){
-        if($this->start && $this->end){
+        $this->validate([
+            'start'=>'required',
+            'end'=>'required',
+        ],[
+            'start.required'=>'ກະລຸນາເລືອກ ວັນທີເລີ່ມຕົ້ນ ກ່ອນ!',
+            'end.required'=>'ກະລຸນາປເລືອກ ວັນທີສິ້ນສຸດ ກ່ອນ!',
+        ]);
             $this->show = 'show';
+            $this->starts = $this->start;$this->ends = $this->end;
             if(!empty($this->branch_id)){
-                if($this->type){
-                    $this->data = Socost::whereBetween('created_date', [$this->start,$this->end])->where('branch_id',$this->branch_id)->where('type',$this->type)->orderBy('id','desc')->get();
-                }else{
-                    $this->data = Socost::whereBetween('created_date', [$this->start,$this->end])->where('branch_id',$this->branch_id)->orderBy('id','desc')->get();
-                }
+                
             }else{
-                if($this->type){
-                    $this->data = Socost::whereBetween('created_date', [$this->start,$this->end])->where('type',$this->type)->orderBy('id','desc')->get();
-                }else{
-                    $this->data = Socost::whereBetween('created_date', [$this->start,$this->end])->orderBy('id','desc')->get();
-                }
+                
             }
-        }else{
-            $this->dispatch('alert',type: 'error', message:'ກະລຸນາເລືອກວັນທີ ຫາ ວັນທີກ່ອນ!');
-        }
     }
 
     public function exportExcel()
     {
         if($this->show == 'show'){
             
+        }else{
+            $this->dispatch('alert',type: 'error', message:'ກະລຸນາສ້າງລາຍງານກ່ອນ!');
+        }
+    }
+
+    public function print(){
+        if($this->show == 'show'){
+            $this->dispatch('refresh_print');
         }else{
             $this->dispatch('alert',type: 'error', message:'ກະລຸນາສ້າງລາຍງານກ່ອນ!');
         }

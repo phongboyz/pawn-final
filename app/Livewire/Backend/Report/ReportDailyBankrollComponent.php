@@ -56,4 +56,12 @@ class ReportDailyBankrollComponent extends Component
             $this->dispatch('alert',type: 'error', message:'ກະລຸນາສ້າງລາຍງານກ່ອນ!');
         }
     }
+
+    public function print(){
+        if($this->show == 'show'){
+            $this->dispatch('refresh_print');
+        }else{
+            $this->dispatch('alert',type: 'error', message:'ກະລຸນາສ້າງລາຍງານກ່ອນ!');
+        }
+    }
 }

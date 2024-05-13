@@ -89,8 +89,9 @@
                                 class="mdi mdi-file-document-box-outline"></i>
                             ສ້າງລາຍງານ</button>
 
-                        <!-- <button class="btn btn-danger phetsarath-font" wire:click="generatePDF"><i class="mdi mdi-file-pdf-box"></i>
-                        </button> -->
+                        <button class="btn btn-danger phetsarath-font" wire:click="print"><i
+                                class="mdi mdi-file-pdf-box"></i>
+                        </button>
 
                         <button class="btn btn-success phetsarath-font" wire:click="exportExcel"><i
                                 class="mdi mdi-file-excel"></i>
@@ -101,76 +102,67 @@
                         <hr>
                     </div>
                 </div>
-                <div class="row" style="display: {{$show}};">
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <span>ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ</span><br>
-                                <span>ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນາຖາວອນ</span><br>
-                                -----------&&&-----------
-                            </div>
-                            <div class="col-12 text-center py-4">
-                                <h4><b class="phetsarath-font text-black"
-                                        style="color: black;"><u>ລາຍງານບັນຊີປະຈຳວັນ</u></b></h4>
-                                <span>
-                                    ແຕ່ວັນທີ .......................... ຫາ ..........................
-                                </span>
-                            </div>
-                            <div class="col-12 text-center">
 
+                <div class="right_content">
+                    <div class="row" style="display: {{$show}};">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <span>ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ</span><br>
+                                    <span>ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນາຖາວອນ</span><br>
+                                    -----------&&&-----------
+                                </div>
+                                <div class="col-12 text-center py-4">
+                                    <h4><b class="phetsarath-font text-black"
+                                            style="color: black;"><u>ລາຍງານບັນຊີປະຈຳວັນ</u></b></h4>
+                                    <span>
+                                        ແຕ່ວັນທີ .......................... ຫາ ..........................
+                                    </span>
+                                </div>
+                                <div class="col-12 text-center">
+
+                                </div>
                             </div>
-                        </div>
-                        <div class="row py-4">
-                            <div class="col-12">
-                                <table border="1" width="100%">
-                                    <tr class="text-center">
-                                        <th rowspan="2" class="p-2">ລຳດັບ</th>
-                                        <th rowspan="2" class="p-2">ວັນທີສ້າງ</th>
-                                        <th colspan="2" class="p-2">ເລກທີບິນ</th>
-                                        <th colspan="2" class="p-2">ເນື້ອໃນລາຍການ</th>
-                                        <th colspan="2" class="p-2">ຈຳນວນເງິນ</th>
-                                    </tr>
-                                    <tr class="text-center">
-                                        <th class="p-2">ໜີ້</th>
-                                        <th class="p-2">ມີ</th>
-                                        <th class="p-2">ໜີ້</th>
-                                        <th class="p-2">ມີ</th>
-                                        <th class="p-2">ໜີ້</th>
-                                        <th class="p-2">ມີ</th>
-                                    </tr>
-                                    <tbody>
-
-
-                                        <tr>
-                                            <td colspan="8" class="p-2 text-center" style="background-color: #CECECE;">
-                                                ບໍ່ມີຂໍ້ມູນ</td>
+                            <div class="row py-4">
+                                <div class="col-12">
+                                    <table border="1" width="100%">
+                                        <tr class="text-center">
+                                            <th rowspan="2" class="p-2">ລຳດັບ</th>
+                                            <th rowspan="2" class="p-2">ວັນທີສ້າງ</th>
+                                            <th colspan="2" class="p-2">ເລກທີບິນ</th>
+                                            <th colspan="2" class="p-2">ເນື້ອໃນລາຍການ</th>
+                                            <th colspan="2" class="p-2">ຈຳນວນເງິນ</th>
                                         </tr>
+                                        <tr class="text-center">
+                                            <th class="p-2">ໜີ້</th>
+                                            <th class="p-2">ມີ</th>
+                                            <th class="p-2">ໜີ້</th>
+                                            <th class="p-2">ມີ</th>
+                                            <th class="p-2">ໜີ້</th>
+                                            <th class="p-2">ມີ</th>
+                                        </tr>
+                                        <tbody>
 
-                                    </tbody>
-                                </table>
+
+                                            <tr>
+                                                <td colspan="8" class="p-2 text-center"
+                                                    style="background-color: #CECECE;">
+                                                    ບໍ່ມີຂໍ້ມູນ</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
+
 
             </div>
         </div>
     </div>
 </div>
 
-@push('scripts')
-
-<link href="{{asset('backend/assets/libs/select2/select2.min.css')}}" rel="stylesheet" type="text/css">
-<script src="{{asset('backend/assets/libs/select2/select2.min.js')}}"></script>
-
-<script>
-$(document).ready(function() {
-    $('#branch_id').select2();
-    $('#branch_id').on('change', function(e) {
-        var data = $('#branch_id').select2("val");
-        @this.set('branch_id', data);
-    });
-});
-</script>
-@endpush
+@include('livewire.backend.report.js-report')
