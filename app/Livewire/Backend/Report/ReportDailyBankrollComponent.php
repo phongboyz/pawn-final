@@ -7,16 +7,18 @@ use App\Models\Branch;
 use App\Models\Socost;
 use App\Models\Pawn;
 use App\Models\PawnDetail;
+use App\Models\Currency;
 
 class ReportDailyBankrollComponent extends Component
 {
-    public $branchs, $data = [];
-    public $branch_id, $start, $end, $type;
+    public $branchs, $data = [], $crcs;
+    public $branch_id, $crc_id, $start, $end, $type;
     public $show = 'show';
     public $pdf;
 
     public function mount(){
         $this->branchs = Branch::select('id','name')->get();
+        $this->crcs = Currency::select('id','name')->get();
     }
 
     public function render()

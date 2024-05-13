@@ -13,6 +13,7 @@ class Socost extends Model
         'code',
         'name',
         'type',
+        'crc_id',
         'total',
         'detail',
         'image',
@@ -20,6 +21,11 @@ class Socost extends Model
         'branch_id',
         'created_date',
     ];
+
+    public function crcname()
+    {
+        return $this->belongsTo('App\Models\Currency','crc_id','id');
+    }
 
     public function username()
     {

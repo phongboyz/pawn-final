@@ -16,6 +16,7 @@ return new class extends Migration
             $table->char('code',8);
             $table->string('name');
             $table->char('type',8);
+            $table->integer('crc_id');
             $table->decimal('total',15,2)->default('0');
             $table->text('detail')->nullable();
             $table->text('image')->nullable();
