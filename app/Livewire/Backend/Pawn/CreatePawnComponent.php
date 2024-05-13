@@ -161,7 +161,7 @@ class CreatePawnComponent extends Component
             $pawn_code = new PawnCode();
             $pawn_code->name = auth()->user()->branchname->code;
             $pawn_code->save();
-            $code = PawnCode::where('name', $pawn_code->name)->where('number',$pawn_code->number)->orderBy('number','desc')->first();
+            $code = PawnCode::where('name', auth()->user()->branchname->code)->orderBy('number','desc')->first();
 
             $data = new Pawn();
             $data->code = $code->name.'-'.$code->number;
@@ -170,6 +170,7 @@ class CreatePawnComponent extends Component
             $data->crc_id = $this->crc;
             $data->money = $pawn_money;
             $data->money_name = $this->moneyname;
+            $data->interest_percent = $this->int;
             $data->interest = $pawn_intr;
             $data->balance = $pawn_money;
             // $data->balance_int = $pawn_intr;

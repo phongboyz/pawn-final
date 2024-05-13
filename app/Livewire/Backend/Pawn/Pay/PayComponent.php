@@ -83,7 +83,10 @@ class PayComponent extends Component
         $pawn->save();
 
         $check = Pawn::find($this->pawnid);
-        if($check->balance == 0) $check->status = 'f';
+        if($check->balance == 0){
+            $check->status = 'f';
+            $check->save();
+        } 
 
         session()->flash('success', 'ຊຳລະສຳເລັດ');
         return redirect(route('pay-pawn', $this->pawnid));

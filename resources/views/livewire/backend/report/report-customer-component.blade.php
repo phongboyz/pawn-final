@@ -78,59 +78,95 @@
 
                     </div>
                     <div class="col-12">
-                            <hr>
-                        </div>
+                        <hr>
+                    </div>
                 </div>
 
                 <div class="right_content">
                     <div class="row" style="display: {{$show}};">
-                        
-                        <div class="col-12 text-center">
-                            <span>ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ</span><br>
-                            <span>ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນາຖາວອນ</span><br>
-                            -----------&&&-----------
-                        </div>
-                        <div class="col-12 text-center py-4">
-                            <h4><b class="phetsarath-font text-black"
-                                    style="color: black;"><u>ລາຍງານສະຖິຕິສິນເຊື່ອລູກຄ້າ</u></b></h4>
-                            <p class="py-3">
-                                ສາຂາ : ທັງໝົດ
-                                <br>
-                                ແຕ່ວັນທີ .......................... ຫາ ..........................
-                            </p>
-                        </div>
-                        <div class="col-12 text-center">
-
-                        </div>
-                    </div>
-                    <div class="row py-2">
                         <div class="col-12">
-                            <table border="1" width="100%">
+                            <div class="row">
 
-                                <thead>
-                                    <tr class="text-center">
-                                        <th rowspan="2" class="p-2"> ລຳດັບ </th>
-                                        <th rowspan="2" class="p-2"> ຊື່ລູກຄ້າ </th>
-                                        <th rowspan="2" class="p-2"> ເບີໂທ </th>
-                                        <th colspan="3" class="p-2"> ຂໍ້ມູນສິນເຊື່ອ </th>
-                                    </tr>
-                                    <tr class="text-center">
-                                        <th class="p-2"> ຈຳນວນໃຊ້ບໍລິການ </th>
-                                        <th class="p-2"> ຍອດກູ້ຢືມທັງໝົດ </th>
-                                        <th class="p-2"> ຍອດຄ້າງຊຳລະ </th>
-                                    </tr>
-                                </thead>
+                                <div class="col-12 text-center">
+                                    <span>ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ</span><br>
+                                    <span>ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນາຖາວອນ</span><br>
+                                    -----------&&&-----------
+                                </div>
+                                <div class="col-12 text-center py-4">
+                                    <h4><b class="phetsarath-font text-black"
+                                            style="color: black;"><u>ລາຍງານສະຖິຕິສິນເຊື່ອລູກຄ້າ</u></b></h4>
+                                    <p class="py-3">
+                                        ສາຂາ : @if($branch_ids) {{$data_branch->name}} @else ທັງໝົດ @endif
+                                        <br>
+                                        ແຕ່ວັນທີ @if($starts) {{date('d/m/Y', strtotime($starts))}} @else
+                                        ..........................@endif ຫາ @if($ends)
+                                        {{date('d/m/Y', strtotime($ends))}}
+                                        @else .......................... @endif
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row py-2">
+                                <div class="col-12">
+                                    <table border="1" width="100%">
 
-                                <tr>
-                                    <td colspan="6" class="p-2 text-center" style="background-color: #CECECE;">
-                                        ບໍ່ມີຂໍ້ມູນ
-                                    </td>
-                                </tr>
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th rowspan="2" class="p-2"> ລຳດັບ </th>
+                                                <th rowspan="2" class="p-2"> ຊື່ລູກຄ້າ </th>
+                                                <th rowspan="2" class="p-2"> ເບີໂທ </th>
+                                                <th colspan="5" class="p-2"> ຂໍ້ມູນສິນເຊື່ອ </th>
+                                            </tr>
+                                            <tr class="text-center">
+                                                <th class="p-2"> ຈຳນວນໃຊ້ບໍລິການ </th>
+                                                <th class="p-2"> ຍອດກູ້ຢືມທັງໝົດ (LAK) </th>
+                                                <th class="p-2"> ຍອດກູ້ຢືມທັງໝົດ (THB) </th>
+                                                <th class="p-2"> ຍອດຄ້າງຊຳລະ (LAK) </th>
+                                                <th class="p-2"> ຍອດຄ້າງຊຳລະ (THB) </th>
+                                            </tr>
+                                        </thead>
 
-                                </tbody>
-                            </table>
+                                        <tbody>
+                                            @php $no = 1; @endphp
+                                            @forelse ($data as $item)
+
+                                            <tr>
+                                                <td class="text-center">{{$no++}}</td>
+                                                <td class="text-center">{{$item->cusname->name}}
+                                                    {{$item->cusname->lname}}</td>
+                                                <td class="text-center">{{$item->cusname->phone}}</td>
+                                                <td class="text-center">{{$item->cusname->count_sv}}</td>
+                                                <td class="text-center">
+                                                    @foreach ($data_cus_lak as $items)
+                                                    @if ($item->cus_id == $items->cus_id)
+                                                    {{number_format($items->money)}}
+                                                    @endif
+                                                    @endforeach
+                                                </td>
+                                                <td class="text-center">{{number_format($item->money)}}</td>
+                                                <td class="text-center">{{number_format($item->balance)}}</td>
+                                                <td class="text-center">
+                                                    @foreach ($data_cus_lak as $items)
+                                                    @if ($item->cus_id == $items->cus_id)
+                                                    {{number_format($items->balance)}}
+                                                    @endif
+                                                    @endforeach
+                                                </td>
+                                            </tr>
+                                            @empty
+                                            <tr>
+                                                <td colspan="8" class="p-2 text-center"
+                                                    style="background-color: #CECECE;">
+                                                    ບໍ່ມີຂໍ້ມູນ
+                                                </td>
+                                            </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
