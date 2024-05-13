@@ -33,15 +33,16 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                    <div wire:key="select-field-model-version-{{ $refresh_pro }}"></div>
+                                        <div wire:key="select-field-model-version-{{ $refresh_pro }}"></div>
                                         <div wire:ignore>
-                                        <p>ແຂວງ</p>
-                                        <select name="pro_id" id="pro_id" wire:model="pro_id" class="form-control select2  @error('pro_id') is-invalid @enderror">
-                                            <option value="">ກະລຸນາເລືອກແຂວງ</option>
-                                            @foreach ($provinces as $item)
-                                            <option value="{{$item->id}}">{{$item->name}}</option>
-                                            @endforeach
-                                        </select>
+                                            <p>ແຂວງ</p>
+                                            <select name="pro_id" id="pro_id" wire:model="pro_id"
+                                                class="form-control select2  @error('pro_id') is-invalid @enderror">
+                                                <option value="">ກະລຸນາເລືອກແຂວງ</option>
+                                                @foreach ($provinces as $item)
+                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         @error('pro_id') <span style="color: red"
                                             class="error">{{ $message }}</span>@enderror
@@ -52,9 +53,10 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <p>ເມືອງ</p>
-                                        <select name="dis_id" id="dis_id" wire:model="dis_id" class="form-control select2  @error('dis_id') is-invalid @enderror">
+                                        <select name="dis_id" id="dis_id" wire:model="dis_id"
+                                            class="form-control select2  @error('dis_id') is-invalid @enderror">
                                             @foreach ($districts as $item)
-                                            <option value="{{$item->id}}" >{{$item->name}}</option>
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
                                             @endforeach
                                         </select>
                                         @error('dis_id') <span style="color: red"
@@ -62,27 +64,29 @@
                                     </div>
                                 </div>
                                 @endif
-                                
+
                                 @if ($dis_id)
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <p>ຊື່ບ້ານ</p>
-                                            <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                                wire:model="name" placeholder="ຊື່ບ້ານ" wire:keydown.enter="store" require>
-                                            @error('name') <span style="color: red"
-                                                class="error">{{ $message }}</span>@enderror
-                                        </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <p>ຊື່ບ້ານ</p>
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                            wire:model="name" placeholder="ຊື່ບ້ານ" wire:keydown.enter="store" require>
+                                        @error('name') <span style="color: red"
+                                            class="error">{{ $message }}</span>@enderror
                                     </div>
+                                </div>
                                 @endif
-                                
+
                             </div>
                         </div>
                         <div class="card-footer">
 
                             @if ($editId)
-                            <button class="btn btn-warning" wire:click="store">ອັບເດດ</button>
+                            @if(!empty($data_role['editVil']))<button class="btn btn-warning"
+                                wire:click="store">ອັບເດດ</button>@endif
                             @else
-                            <button class="btn btn-success" wire:click="store">ບັນທຶກ</button>
+                            @if(!empty($data_role['addVil']))<button class="btn btn-success"
+                                wire:click="store">ບັນທຶກ</button>@endif
                             @endif
 
                             <a href="{{route('village')}}" class="btn btn-danger">ລ້າງຂໍ້ມູນ</a>
@@ -140,7 +144,8 @@
                                             <th> ແຂວງ </th>
                                             <th> ເມືອງ </th>
                                             <th> ຊື່ບ້ານ </th>
-                                            <th> ປຸ່ມກົດ </th>
+                                            @if(!empty($data_role['editVil']) || !empty($data_role['delVil']))<th>
+                                                ປຸ່ມກົດ </th>@endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -151,16 +156,20 @@
                                             <td>{{$item->proname->name}}</td>
                                             <td>{{$item->disname->name}}</td>
                                             <td>{{$item->name}}</td>
+                                            @if(!empty($data_role['editVil']) || !empty($data_role['delVil']))
                                             <td>
                                                 <div class="btn-group btn-group-justified text-white mb-2">
-                                                    <a class="btn btn-warning waves-effect waves-light"
+                                                    @if(!empty($data_role['editVil']))<a
+                                                        class="btn btn-warning waves-effect waves-light"
                                                         wire:click="edit({{$item->id}})"><i
-                                                            class="mdi mdi-pencil-remove-outline"></i></a>
-                                                    <a class="btn btn-danger waves-effect waves-light"
+                                                            class="mdi mdi-pencil-remove-outline"></i></a>@endif
+                                                    @if(!empty($data_role['delVil']))<a
+                                                        class="btn btn-danger waves-effect waves-light"
                                                         wire:click="delete({{$item->id}})"><i
-                                                            class="mdi mdi-window-close"></i></a>
+                                                            class="mdi mdi-window-close"></i></a>@endif
                                                 </div>
                                             </td>
+                                            @endif
                                         </tr>
                                         @empty
                                         <tr class="text-center">
@@ -255,12 +264,10 @@ $(document).ready(function() {
         @this.set('pro_id', data);
     });
     $('#dis_id').select2();
-        $('#dis_id').on('change', function(e) {
-            var data = $('#dis_id').select2("val");
-            @this.set('dis_id', data);
-        });
+    $('#dis_id').on('change', function(e) {
+        var data = $('#dis_id').select2("val");
+        @this.set('dis_id', data);
+    });
 });
-
-
 </script>
 @endpush

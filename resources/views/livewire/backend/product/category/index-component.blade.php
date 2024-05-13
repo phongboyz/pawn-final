@@ -35,7 +35,8 @@
                                     <div class="form-group">
                                         <p>ຊື່ປະເພດຫຼັກຊັບ</p>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            wire:model="name" placeholder="ຊື່ໝວດຫຼັກຊັບ" wire:keydown.enter="store" require>
+                                            wire:model="name" placeholder="ຊື່ໝວດຫຼັກຊັບ" wire:keydown.enter="store"
+                                            require>
                                         @error('name') <span style="color: red"
                                             class="error">{{ $message }}</span>@enderror
                                     </div>
@@ -44,7 +45,8 @@
                                     <div class="form-group">
                                         <p>ຫົວໜ່ວຍ</p>
                                         <input type="text" class="form-control @error('unit_name') is-invalid @enderror"
-                                            wire:model="unit_name" placeholder="ຫົວໜ່ວຍ" wire:keydown.enter="store" require>
+                                            wire:model="unit_name" placeholder="ຫົວໜ່ວຍ" wire:keydown.enter="store"
+                                            require>
                                         @error('unit_name') <span style="color: red"
                                             class="error">{{ $message }}</span>@enderror
                                     </div>
@@ -54,9 +56,11 @@
                         <div class="card-footer">
 
                             @if ($editId)
-                            <button class="btn btn-warning" wire:click="store">ອັບເດດ</button>
+                            @if(!empty($data_role['editCate']))<button class="btn btn-warning"
+                                wire:click="store">ອັບເດດ</button>@endif
                             @else
-                            <button class="btn btn-success" wire:click="store">ບັນທຶກ</button>
+                            @if(!empty($data_role['addCate']))<button class="btn btn-success"
+                                wire:click="store">ບັນທຶກ</button>@endif
                             @endif
 
                             <a href="{{route('category')}}" class="btn btn-danger">ລ້າງຂໍ້ມູນ</a>
@@ -126,12 +130,14 @@
                                             <td>{{$item->unit_name}}</td>
                                             <td>
                                                 <div class="btn-group btn-group-justified text-white mb-2">
+                                                    @if(!empty($data_role['editCate']))
                                                     <a class="btn btn-warning waves-effect waves-light"
                                                         wire:click="edit({{$item->id}})"><i
-                                                            class="mdi mdi-pencil-remove-outline"></i></a>
+                                                            class="mdi mdi-pencil-remove-outline"></i></a>@endif
+                                                    @if(!empty($data_role['delCate']))
                                                     <a class="btn btn-danger waves-effect waves-light"
                                                         wire:click="delete({{$item->id}})"><i
-                                                            class="mdi mdi-window-close"></i></a>
+                                                            class="mdi mdi-window-close"></i></a>@endif
                                                 </div>
                                             </td>
                                         </tr>

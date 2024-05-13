@@ -17,6 +17,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
+                @if(!empty($data_role['addCus']))
                 <div class="card-header bg-white py-3 text-white">
                     <a data-toggle="collapse" href="#cardCollpase1" role="button" aria-expanded="false"
                         aria-controls="cardCollpase2">
@@ -25,6 +26,7 @@
                         </button>
                     </a>
                 </div>
+                @endif
                 <div id="cardCollpase1" class="collapse {{$form}}">
                     <div wire:ignore.self>
                         <div class="card-body">
@@ -74,11 +76,12 @@
                                 </div>
                                 <div class="col-4" style="border-left-style: groove; border-left-color: #29BAF1;">
                                     <div class="form-group">
-                                    <!-- <div wire:key="select-field-model-version-{{ $refresh_pro }}"></div> -->
+                                        <!-- <div wire:key="select-field-model-version-{{ $refresh_pro }}"></div> -->
                                         <div>
-                                        <p>ແຂວງ</p>
-                                            <select  wire:model="pro_id"
-                                                class="form-control @error('pro_id') is-invalid @enderror" wire:click="selected">
+                                            <p>ແຂວງ</p>
+                                            <select wire:model="pro_id"
+                                                class="form-control @error('pro_id') is-invalid @enderror"
+                                                wire:click="selected">
                                                 <option value="">ກະລຸນາເລືອກແຂວງ</option>
                                                 @foreach ($provinces as $item)
                                                 <option value="{{$item->id}}">{{$item->name}}</option>
@@ -119,16 +122,18 @@
 
                                     @endif
 
-                                    
+
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer">
 
                             @if ($editId)
-                            <button class="btn btn-warning" wire:click="store">ອັບເດດ</button>
+                            @if(!empty($data_role['editCus']))<button class="btn btn-warning"
+                                wire:click="store">ອັບເດດ</button>@endif
                             @else
-                            <button class="btn btn-success" wire:click="store">ບັນທຶກ</button>
+                            @if(!empty($data_role['addCus']))<button class="btn btn-success"
+                                wire:click="store">ບັນທຶກ</button>@endif
                             @endif
 
                             @if (empty($addId))
@@ -205,7 +210,9 @@
                                             <th> ຊື່ ແລະ ນາມສະກຸນ </th>
                                             <th> ເບີໂທ </th>
                                             <th> ທີ່ຢູ່ </th>
+                                            @if(!empty($data_role['editCus']) || !empty($data_role['delCus']))
                                             <th> ປຸ່ມກົດ </th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -217,20 +224,24 @@
                                                 {{$item->count_sv}}
                                             </td>
                                             <td>
-                                                @if($item->gender == 'f') ນາງ @else ທ້າວ @endif    
-                                            {{$item->name}} {{$item->lname}}</td>
+                                                @if($item->gender == 'f') ນາງ @else ທ້າວ @endif
+                                                {{$item->name}} {{$item->lname}}</td>
                                             <td>{{$item->phone}}</td>
                                             <td>{{$item->address}}</td>
+                                            @if(!empty($data_role['editCus']) || !empty($data_role['delCus']))
                                             <td>
                                                 <div class="btn-group btn-group-justified text-white mb-2">
-                                                    <a class="btn btn-warning waves-effect waves-light"
+                                                    @if(!empty($data_role['editCus']))<a
+                                                        class="btn btn-warning waves-effect waves-light"
                                                         wire:click="edit({{$item->id}})"><i
-                                                            class="mdi mdi-pencil-remove-outline"></i></a>
-                                                    <a class="btn btn-danger waves-effect waves-light"
+                                                            class="mdi mdi-pencil-remove-outline"></i></a>@endif
+                                                    @if(!empty($data_role['delCus']))<a
+                                                        class="btn btn-danger waves-effect waves-light"
                                                         wire:click="delete({{$item->id}})"><i
-                                                            class="mdi mdi-window-close"></i></a>
+                                                            class="mdi mdi-window-close"></i></a>@endif
                                                 </div>
                                             </td>
+                                            @endif
                                         </tr>
                                         @empty
                                         <tr class="text-center">

@@ -45,9 +45,11 @@
                         <div class="card-footer">
 
                             @if ($editId)
-                            <button class="btn btn-warning" wire:click="store">ອັບເດດ</button>
+                            @if(!empty($data_role['editProv']))<button class="btn btn-warning"
+                                wire:click="store">ອັບເດດ</button>@endif
                             @else
-                            <button class="btn btn-success" wire:click="store">ບັນທຶກ</button>
+                            @if(!empty($data_role['addProv']))<button class="btn btn-success"
+                                wire:click="store">ບັນທຶກ</button>@endif
                             @endif
 
                             <a href="{{route('province')}}" class="btn btn-danger">ລ້າງຂໍ້ມູນ</a>
@@ -104,7 +106,8 @@
                                         <tr class="text-center">
                                             <th> ລຳດັບ </th>
                                             <th> ຊື່ແຂວງ </th>
-                                            <th> ປຸ່ມກົດ </th>
+                                            @if(!empty($data_role['editProv']) || !empty($data_role['delProv']))<th>
+                                                ປຸ່ມກົດ </th>@endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -113,16 +116,20 @@
                                         <tr class="text-center">
                                             <td>{{$no++}}</td>
                                             <td>{{$item->name}}</td>
+                                            @if(!empty($data_role['editProv']) || !empty($data_role['delProv']))
                                             <td>
                                                 <div class="btn-group btn-group-justified text-white mb-2">
-                                                    <a class="btn btn-warning waves-effect waves-light"
+                                                    @if(!empty($data_role['editProv']))<a
+                                                        class="btn btn-warning waves-effect waves-light"
                                                         wire:click="edit({{$item->id}})"><i
-                                                            class="mdi mdi-pencil-remove-outline"></i></a>
-                                                    <a class="btn btn-danger waves-effect waves-light"
+                                                            class="mdi mdi-pencil-remove-outline"></i></a>@endif
+                                                    @if(!empty($data_role['delProv']))<a
+                                                        class="btn btn-danger waves-effect waves-light"
                                                         wire:click="delete({{$item->id}})"><i
-                                                            class="mdi mdi-window-close"></i></a>
+                                                            class="mdi mdi-window-close"></i></a>@endif
                                                 </div>
                                             </td>
+                                            @endif
                                         </tr>
                                         @empty
                                         <tr class="text-center">

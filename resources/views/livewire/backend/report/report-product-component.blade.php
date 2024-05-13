@@ -109,15 +109,19 @@
 
                                 <thead>
                                     <tr class="text-center">
-                                        <th class="p-2"> ລຳດັບ </th>
-                                        <th class="p-2"> ປະເພດຫຼັກຊັບ </th>
-                                        <th class="p-2"> ຈຳນວນລາຍການ </th>
-                                        <th class="p-2"> ຈຳນວນເງິນ </th>
+                                        <th rowspan="2" class="p-2"> ລຳດັບ </th>
+                                        <th rowspan="2" class="p-2"> ປະເພດຫຼັກຊັບ </th>
+                                        <th rowspan="2" class="p-2"> ຈຳນວນລາຍການ </th>
+                                        <th colspan="2" class="p-2"> ຈຳນວນເງິນ </th>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <th class="p-2">ກີບ (LAK)</th>
+                                        <th class="p-2">ບາດ (THB)</th>
                                     </tr>
                                 </thead>
 
                                 <tr>
-                                    <td colspan="4" class="p-2 text-center" style="background-color: #CECECE;">
+                                    <td colspan="5" class="p-2 text-center" style="background-color: #CECECE;">
                                         ບໍ່ມີຂໍ້ມູນ
                                     </td>
                                 </tr>

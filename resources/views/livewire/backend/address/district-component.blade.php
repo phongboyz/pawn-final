@@ -33,20 +33,21 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                    <div wire:key="select-field-model-version-{{ $refresh_pro }}"></div>
+                                        <div wire:key="select-field-model-version-{{ $refresh_pro }}"></div>
                                         <div wire:ignore>
-                                        <p>ແຂວງ</p>
-                                        <select name="pro_id" id="pro_id" wire:model="pro_id" class="form-control select2  @error('pro_id') is-invalid @enderror">
-                                            <option value="">ກະລຸນາເລືອກແຂວງ</option>
-                                            @foreach ($provinces as $item)
-                                            <option value="{{$item->id}}">{{$item->name}}</option>
-                                            @endforeach
-                                        </select>
+                                            <p>ແຂວງ</p>
+                                            <select name="pro_id" id="pro_id" wire:model="pro_id"
+                                                class="form-control select2  @error('pro_id') is-invalid @enderror">
+                                                <option value="">ກະລຸນາເລືອກແຂວງ</option>
+                                                @foreach ($provinces as $item)
+                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         @error('pro_id') <span style="color: red"
                                             class="error">{{ $message }}</span>@enderror
                                     </div>
-                                    
+
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
@@ -62,9 +63,11 @@
                         <div class="card-footer">
 
                             @if ($editId)
-                            <button class="btn btn-warning" wire:click="store">ອັບເດດ</button>
+                            @if(!empty($data_role['editDis']))<button class="btn btn-warning"
+                                wire:click="store">ອັບເດດ</button>@endif
                             @else
-                            <button class="btn btn-success" wire:click="store">ບັນທຶກ</button>
+                            @if(!empty($data_role['addDis']))<button class="btn btn-success"
+                                wire:click="store">ບັນທຶກ</button>@endif
                             @endif
 
                             <a href="{{route('district')}}" class="btn btn-danger">ລ້າງຂໍ້ມູນ</a>
@@ -121,7 +124,8 @@
                                             <th> ລຳດັບ </th>
                                             <th> ແຂວງ </th>
                                             <th> ຊື່ເມືອງ </th>
-                                            <th> ປຸ່ມກົດ </th>
+                                            @if(!empty($data_role['editDis']) || !empty($data_role['delDis']))<th>
+                                                ປຸ່ມກົດ </th>@endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -131,16 +135,20 @@
                                             <td>{{$no++}}</td>
                                             <td>{{$item->proname->name}}</td>
                                             <td>{{$item->name}}</td>
+                                            @if(!empty($data_role['editDis']) || !empty($data_role['delDis']))
                                             <td>
                                                 <div class="btn-group btn-group-justified text-white mb-2">
-                                                    <a class="btn btn-warning waves-effect waves-light"
+                                                    @if(!empty($data_role['editDis']))<a
+                                                        class="btn btn-warning waves-effect waves-light"
                                                         wire:click="edit({{$item->id}})"><i
-                                                            class="mdi mdi-pencil-remove-outline"></i></a>
-                                                    <a class="btn btn-danger waves-effect waves-light"
+                                                            class="mdi mdi-pencil-remove-outline"></i></a>@endif
+                                                    @if(!empty($data_role['delDis']))<a
+                                                        class="btn btn-danger waves-effect waves-light"
                                                         wire:click="delete({{$item->id}})"><i
-                                                            class="mdi mdi-window-close"></i></a>
+                                                            class="mdi mdi-window-close"></i></a>@endif
                                                 </div>
                                             </td>
+                                            @endif
                                         </tr>
                                         @empty
                                         <tr class="text-center">
@@ -220,7 +228,5 @@ $(document).ready(function() {
         @this.set('pro_id', data);
     });
 });
-
-
 </script>
 @endpush
