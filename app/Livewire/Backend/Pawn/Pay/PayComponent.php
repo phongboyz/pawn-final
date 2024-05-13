@@ -5,6 +5,7 @@ namespace App\Livewire\Backend\Pawn\Pay;
 use Livewire\Component;
 use App\Models\Pawn;
 use App\Models\PawnDetail;
+use App\Models\Transaction;
 
 class PayComponent extends Component
 {
@@ -82,6 +83,96 @@ class PayComponent extends Component
         $pawn->discount += $this->discounts;
         $pawn->save();
 
+            $tran = new Transaction(); 
+            $tran->created_date = date('Y-m-d');
+            $tran->tran_type = 'pawn';
+            $tran->type = 'cr';
+            $tran->code = $pawn->code;
+            $tran->cus_id = $pawn->cus_id;
+            $tran->cate_id = $pawn->proname->cate_id;
+            $tran->product_id = $pawn->product_id;
+            $tran->crc_id = $pawn->crc_id;
+            if($pawn->crc_id == 1){
+                $tran->money_thb = $this->money;
+            }elseif($pawn->crc_id == 2){
+                $tran->money_lak = $this->money;
+            }else{
+                $tran->money_usd = $this->money;
+            }
+            $tran->detail = 'ເງິນຄ່າງວດຊຳລະ';
+            $tran->user_id = auth()->user()->id;
+            $tran->branch_id = auth()->user()->branch_id;
+            $tran->save();
+
+            if($this->int){
+                $tran = new Transaction(); 
+                $tran->created_date = date('Y-m-d');
+                $tran->tran_type = 'pawn';
+                $tran->type = 'cr';
+                $tran->code = $pawn->code;
+                $tran->cus_id = $pawn->cus_id;
+                $tran->cate_id = $pawn->proname->cate_id;
+                $tran->product_id = $pawn->product_id;
+                $tran->crc_id = $pawn->crc_id;
+                if($pawn->crc_id == 1){
+                    $tran->money_thb = $this->int;
+                }elseif($pawn->crc_id == 2){
+                    $tran->money_lak = $this->int;
+                }else{
+                    $tran->money_usd = $this->int;
+                }
+                $tran->detail = 'ດອກເບ້ຍຄ່າງວດຊຳລະ';
+                $tran->user_id = auth()->user()->id;
+                $tran->branch_id = auth()->user()->branch_id;
+                $tran->save();
+            }
+
+            if($this->adj){
+                $tran = new Transaction(); 
+                $tran->created_date = date('Y-m-d');
+                $tran->tran_type = 'pawn';
+                $tran->type = 'cr';
+                $tran->code = $pawn->code;
+                $tran->cus_id = $pawn->cus_id;
+                $tran->cate_id = $pawn->proname->cate_id;
+                $tran->product_id = $pawn->product_id;
+                $tran->crc_id = $pawn->crc_id;
+                if($pawn->crc_id == 1){
+                    $tran->money_thb = $this->adj;
+                }elseif($pawn->crc_id == 2){
+                    $tran->money_lak = $this->adj;
+                }else{
+                    $tran->money_usd = $this->adj;
+                }
+                $tran->detail = 'ດອກເບ້ຍປັບໄໝຄ່າງວດຊຳລະ';
+                $tran->user_id = auth()->user()->id;
+                $tran->branch_id = auth()->user()->branch_id;
+                $tran->save();
+            }
+
+            if($this->fees){
+                $tran = new Transaction(); 
+                $tran->created_date = date('Y-m-d');
+                $tran->tran_type = 'pawn';
+                $tran->type = 'cr';
+                $tran->code = $pawn->code;
+                $tran->cus_id = $pawn->cus_id;
+                $tran->cate_id = $pawn->proname->cate_id;
+                $tran->product_id = $pawn->product_id;
+                $tran->crc_id = $pawn->crc_id;
+                if($pawn->crc_id == 1){
+                    $tran->money_thb = $this->fees;
+                }elseif($pawn->crc_id == 2){
+                    $tran->money_lak = $this->fees;
+                }else{
+                    $tran->money_usd = $this->fees;
+                }
+                $tran->detail = 'ຄ່າທຳນຽມງວດຊຳລະ';
+                $tran->user_id = auth()->user()->id;
+                $tran->branch_id = auth()->user()->branch_id;
+                $tran->save();
+            }
+
         $check = Pawn::find($this->pawnid);
         if($check->balance == 0){
             $check->status = 'f';
@@ -126,6 +217,96 @@ class PayComponent extends Component
         $pawn->fees_money += $this->fees;
         $pawn->discount += $this->discounts;
         $pawn->save();
+
+        $tran = new Transaction(); 
+            $tran->created_date = date('Y-m-d');
+            $tran->tran_type = 'pawn';
+            $tran->type = 'cr';
+            $tran->code = $pawn->code;
+            $tran->cus_id = $pawn->cus_id;
+            $tran->cate_id = $pawn->proname->cate_id;
+            $tran->product_id = $pawn->product_id;
+            $tran->crc_id = $pawn->crc_id;
+            if($pawn->crc_id == 1){
+                $tran->money_thb = $this->money;
+            }elseif($pawn->crc_id == 2){
+                $tran->money_lak = $this->money;
+            }else{
+                $tran->money_usd = $this->money;
+            }
+            $tran->detail = 'ເງິນຄ່າງວດຊຳລະ';
+            $tran->user_id = auth()->user()->id;
+            $tran->branch_id = auth()->user()->branch_id;
+            $tran->save();
+
+            if($this->int){
+                $tran = new Transaction(); 
+                $tran->created_date = date('Y-m-d');
+                $tran->tran_type = 'pawn';
+                $tran->type = 'cr';
+                $tran->code = $pawn->code;
+                $tran->cus_id = $pawn->cus_id;
+                $tran->cate_id = $pawn->proname->cate_id;
+                $tran->product_id = $pawn->product_id;
+                $tran->crc_id = $pawn->crc_id;
+                if($pawn->crc_id == 1){
+                    $tran->money_thb = $this->int;
+                }elseif($pawn->crc_id == 2){
+                    $tran->money_lak = $this->int;
+                }else{
+                    $tran->money_usd = $this->int;
+                }
+                $tran->detail = 'ດອກເບ້ຍຄ່າງວດຊຳລະ';
+                $tran->user_id = auth()->user()->id;
+                $tran->branch_id = auth()->user()->branch_id;
+                $tran->save();
+            }
+
+            if($this->adj){
+                $tran = new Transaction(); 
+                $tran->created_date = date('Y-m-d');
+                $tran->tran_type = 'pawn';
+                $tran->type = 'cr';
+                $tran->code = $pawn->code;
+                $tran->cus_id = $pawn->cus_id;
+                $tran->cate_id = $pawn->proname->cate_id;
+                $tran->product_id = $pawn->product_id;
+                $tran->crc_id = $pawn->crc_id;
+                if($pawn->crc_id == 1){
+                    $tran->money_thb = $this->adj;
+                }elseif($pawn->crc_id == 2){
+                    $tran->money_lak = $this->adj;
+                }else{
+                    $tran->money_usd = $this->adj;
+                }
+                $tran->detail = 'ດອກເບ້ຍປັບໄໝຄ່າງວດຊຳລະ';
+                $tran->user_id = auth()->user()->id;
+                $tran->branch_id = auth()->user()->branch_id;
+                $tran->save();
+            }
+
+            if($this->fees){
+                $tran = new Transaction(); 
+                $tran->created_date = date('Y-m-d');
+                $tran->tran_type = 'pawn';
+                $tran->type = 'cr';
+                $tran->code = $pawn->code;
+                $tran->cus_id = $pawn->cus_id;
+                $tran->cate_id = $pawn->proname->cate_id;
+                $tran->product_id = $pawn->product_id;
+                $tran->crc_id = $pawn->crc_id;
+                if($pawn->crc_id == 1){
+                    $tran->money_thb = $this->fees;
+                }elseif($pawn->crc_id == 2){
+                    $tran->money_lak = $this->fees;
+                }else{
+                    $tran->money_usd = $this->fees;
+                }
+                $tran->detail = 'ຄ່າທຳນຽມງວດຊຳລະ';
+                $tran->user_id = auth()->user()->id;
+                $tran->branch_id = auth()->user()->branch_id;
+                $tran->save();
+            }
 
         $check = Pawn::find($this->pawnid);
         if($check->balance == 0) $check->status = 'f';

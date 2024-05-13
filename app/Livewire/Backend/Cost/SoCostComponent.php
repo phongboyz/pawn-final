@@ -5,13 +5,15 @@ namespace App\Livewire\Backend\Cost;
 use Livewire\Component;
 use App\Models\Branch;
 use App\Models\Socost;
+use App\Models\Currency;
+use App\Models\Transaction;
 use Livewire\WithFileUploads;
 
 class SoCostComponent extends Component
 {
     use WithFileUploads;
-    public $data, $count, $branchs;
-    public $code, $name, $type = 'normal', $total, $detail, $branch_id, $image, $images;
+    public $data, $count, $branchs, $crcs;
+    public $code, $name, $type = 'normal', $crc_id, $total, $detail, $branch_id, $image, $images;
     public $editId, $delId, $delName;
     public $search, $dataQ = 15, $dateS, $dateE;
     public $form, $ignore_add = 0;
@@ -22,6 +24,7 @@ class SoCostComponent extends Component
         $this->branchs = Branch::select('id','name')->get();
         $this->data = Socost::whereAny(['code','name'],'LIKE','%'.$this->search.'%')->orderBy('id','desc')->limit($this->dataQ)->get();
         $this->count = Socost::whereAny(['code','name'],'LIKE','%'.$this->search.'%')->orderBy('id','desc')->limit($this->dataQ)->count();
+        $this->crcs = Currency::select('id','name')->orderBy('id','desc')->get();
     }
 
     public function render()
@@ -52,12 +55,14 @@ class SoCostComponent extends Component
     public function store(){
         $this->validate([
             'code' => 'required',
+            'crc_id' => 'required',
             'name' => 'required',
             'total' => 'required',
             'branch_id' => 'required',
         ],[
             'code.required' => 'ກະລຸນາປ້ອນລະຫັດທຸລະກຳກ່ອນ',
             'name.required' => 'ກະລຸນາປ້ອນຊື່ທຸລະກຳກ່ອນ',
+            'crc_id.required' => 'ກະລຸນາເລືອກສະກຸນເງິນກ່ອນ',
             'total.required' => 'ກະລຸນາປ້ອນຈຳນວນເງິນກ່ອນ',
             'branch_id.required' => 'ກະລຸນາເລືອກສາຂາກ່ອນ',
         ]);
@@ -68,24 +73,46 @@ class SoCostComponent extends Component
                         'code'=>$this->code,
                         'name'=>$this->name,
                         'type'=>$this->type,
+                        'crc_id'=>$this->crc_id,
                         'total'=>$moneys,
                         'detail'=>$this->detail,
                         'user_id'=>auth()->user()->id,
                         'branch_id'=>$this->branch_id,
                         'created_date'=>date('Y-m-d'),
                     ]);
+                    
                     session()->flash('success', 'ອັບເດດຂໍ້ມູນສຳເລັດ');
                 }else{
                     Socost::insert([
                         'code'=>$this->code,
                         'name'=>$this->name,
                         'type'=>$this->type,
+                        'crc_id'=>$this->crc_id,
                         'total'=>$moneys,
                         'detail'=>$this->detail,
                         'user_id'=>auth()->user()->id,
                         'branch_id'=>$this->branch_id,
                         'created_date'=>date('Y-m-d'),
                     ]);
+
+                    $tran = new Transaction(); 
+                    $tran->created_date = date('Y-m-d');
+                    $tran->tran_type = 'cost';
+                    $tran->type = 'cr';
+                    $tran->code = $this->code;
+                    $tran->crc_id = $this->crc_id;
+                    if($this->crc_id == 1){
+                        $tran->money_thb = $moneys;
+                    }elseif($this->crc_id == 2){
+                        $tran->money_lak = $moneys;
+                    }else{
+                        $tran->money_usd = $moneys;
+                    }
+                    $tran->detail = $this->name;
+                    $tran->user_id = auth()->user()->id;
+                    $tran->branch_id = $this->branch_id;
+                    $tran->save();
+
                     session()->flash('success', 'ບັນທຶກຂໍ້ມູນສຳເລັດ');
                 }
                 return redirect(route('so-cost'));
@@ -100,6 +127,7 @@ class SoCostComponent extends Component
         $this->code = $data->code;
         $this->name = $data->name;
         $this->type = $data->type;
+        $this->crc_id = $data->crc_id;
         $this->total = number_format($data->total,2,'.',',');
         $this->detail = $data->detail;
         $this->branch_id = $data->branch_id;

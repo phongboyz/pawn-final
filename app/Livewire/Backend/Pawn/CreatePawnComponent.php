@@ -10,6 +10,7 @@ use App\Models\Currency;
 use App\Models\Pawn;
 use App\Models\PawnCode;
 use App\Models\PawnDetail;
+use App\Models\Transaction;
 use App\Http\Controllers\NumberToStringController;
 
 
@@ -225,6 +226,27 @@ class CreatePawnComponent extends Component
             $cus = Customer::find($this->cusid);
             $cus->count_sv += 1;
             $cus->save();
+
+            $tran = new Transaction(); 
+            $tran->created_date = date('Y-m-d');
+            $tran->tran_type = 'pawn';
+            $tran->type = 'de';
+            $tran->code = $data->code;
+            $tran->cus_id = $data->cus_id;
+            $tran->cate_id = $data->proname->cate_id;
+            $tran->product_id = $data->product_id;
+            $tran->crc_id = $data->crc_id;
+            if($data->crc_id == 1){
+                $tran->money_thb = $pawn_money;
+            }elseif($data->crc_id == 2){
+                $tran->money_lak = $pawn_money;
+            }else{
+                $tran->money_usd = $pawn_money;
+            }
+            $tran->detail = 'ສ້າງສັນຍາໃໝ່';
+            $tran->user_id = auth()->user()->id;
+            $tran->branch_id = auth()->user()->branch_id;
+            $tran->save();
 
             Pawn::where('id',$data->id)->update(['balance_int'=>$sum_int]);
             session()->flash('success', 'ສ້າງສັນຍາສິນເຊື່ອສຳເລັດ');

@@ -8,18 +8,21 @@ use App\Models\Socost;
 use App\Models\Pawn;
 use App\Models\PawnDetail;
 use App\Models\Currency;
+use App\Models\Transaction;
 
 class ReportDailyBankrollComponent extends Component
 {
     public $branchs, $data = [], $crcs;
-    public $branch_id, $crc_id, $start, $end, $starts, $ends, $type;
-    public $show = 'show';
+    public $branch_id, $branch_ids, $crc_id, $start, $end, $starts, $ends, $type;
+    public $show = 'none';
     public $pdf;
-    public $data_pawn;
+    public $data_branch;
 
     public function mount(){
         $this->branchs = Branch::select('id','name')->get();
         $this->crcs = Currency::select('id','name')->get();
+        $this->start = date('Y-m-d');
+        $this->end = date('Y-m-d');
     }
 
     public function render()
@@ -29,11 +32,9 @@ class ReportDailyBankrollComponent extends Component
 
     public function searchData(){
         $this->validate([
-            'crc_id'=>'required',
             'start'=>'required',
             'end'=>'required',
         ],[
-            'crc_id.required'=>'ກະລຸນາເລືອກ ສະກຸນເງິນ ກ່ອນ!',
             'start.required'=>'ກະລຸນາເລືອກ ວັນທີເລີ່ມຕົ້ນ ກ່ອນ!',
             'end.required'=>'ກະລຸນາປເລືອກ ວັນທີສິ້ນສຸດ ກ່ອນ!',
         ]);
@@ -41,10 +42,11 @@ class ReportDailyBankrollComponent extends Component
             $this->show = 'show';
             $this->starts = $this->start;$this->ends = $this->end;
             if(!empty($this->branch_id)){
-                    $this->data = Socost::whereBetween('created_date', [$this->start,$this->end])->where('branch_id',$this->branch_id)->orderBy('id','desc')->get();
+                $this->branch_ids = $this->branch_id;
+                $this->data_branch = Branch::find($this->branch_id);
+
             }else{
-                    $this->data = Socost::whereBetween('created_date', [$this->start,$this->end])->orderBy('id','desc')->get();
-                    $this->data_pawn = Pawn::whereBetween('created_date', [$this->start,$this->end])->where('crc_id',$this->crc_id)->whereIn('status',['t','f'])->sum('money');
+                $this->data = Transaction::whereBetween('created_date', [$this->starts,$this->ends])->get();
             }
     }
 

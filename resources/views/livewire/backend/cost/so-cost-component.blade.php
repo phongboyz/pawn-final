@@ -34,21 +34,21 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                    <div wire:key="select-field-model-version-{{ $refresh_branch }}"></div>
+                                        <div wire:key="select-field-model-version-{{ $refresh_branch }}"></div>
                                         <div wire:ignore>
-                                        <div class="input-group">
-                                            <span class="input-group-prepend">
-                                                <button type="button"
-                                                    class="btn waves-effect waves-light btn-primary phetsarath-font">ສາຂາ</button>
-                                            </span>
-                                            <select class="form-control" name="branch_id" id="branch_id"
-                                                wire:model="branch_id">
-                                                <option value="">ກະລຸນາເລືອກສາຂາ</option>
-                                                @foreach ($branchs as $item)
-                                                <option value="{{$item->id}}">{{$item->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                            <div class="input-group">
+                                                <span class="input-group-prepend">
+                                                    <button type="button"
+                                                        class="btn waves-effect waves-light btn-primary phetsarath-font">ສາຂາ</button>
+                                                </span>
+                                                <select class="form-control" name="branch_id" id="branch_id"
+                                                    wire:model="branch_id">
+                                                    <option value="">ກະລຸນາເລືອກສາຂາ</option>
+                                                    @foreach ($branchs as $item)
+                                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                         @error('branch_id') <span style="color: red"
                                             class="error">{{ $message }}</span>@enderror
@@ -79,6 +79,20 @@
                                             <option value="normal">ແຫຼ່ງທຶນປົກກະຕິ</option>
                                             <option value="more">ແຫຼ່ງທຶນອື່ນໆ</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <p>ສະກຸນເງິນ</p>
+                                        <select class="form-control @error('crc_id') is-invalid @enderror" name="crc_id"
+                                            id="crc_id" wire:model="crc_id">
+                                            <option value="">ກະລຸນາເລືອກ</option>
+                                            @foreach ($crcs as $item)
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('crc_id') <span style="color: red"
+                                            class="error">{{ $message }}</span>@enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -165,6 +179,7 @@
                                             <th> ວັນທີ </th>
                                             <th> ຊື່ທຸລະກຳ </th>
                                             <th> ຈຳນວນເງິນ </th>
+                                            <th> ສະກຸນເງິນ </th>
                                             <th> ລາຍລະອຽດ </th>
                                             <th> ສາຂາ </th>
                                             <th> ປຸ່ມກົດ </th>
@@ -178,6 +193,7 @@
                                             <td>{{date('d/m/Y',strtotime($item->created_date))}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{number_format($item->total,2,',','.')}}</td>
+                                            <td>{{$item->crcname->name}}</td>
                                             <td>{{$item->detail}}</td>
                                             <td>{{$item->branchname->name}}</td>
                                             <td>

@@ -138,7 +138,7 @@
                                             <span class="phetsarath-font">ແຫຼ່ງທຶນອື່ນໆ</span>
                                             @endif
                                         </td>
-                                        <td>{{number_format($item->total,2,',','.')}}</td>
+                                        <td>{{number_format($item->total,2,',','.')}} {{$item->crcname->name}}</td>
                                         <td>{{$item->detail}}</td>
                                         <td>{{$item->branchname->name}}</td>
                                     </tr>

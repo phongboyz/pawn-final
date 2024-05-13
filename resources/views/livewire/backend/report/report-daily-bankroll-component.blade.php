@@ -38,27 +38,6 @@
                                 <div class="input-group">
                                     <span class="input-group-prepend">
                                         <button type="button"
-                                            class="btn waves-effect waves-light btn-primary phetsarath-font">ສະກຸນເງິນ</button>
-                                    </span>
-                                    <select class="form-control @error('crc_id') is-invalid @enderror" name="crc_id"
-                                        id="crc_id" wire:model="crc_id">
-                                        <option value="">ກະລຸນາເລືອກ</option>
-                                        @foreach ($crcs as $item)
-                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('crc_id') <span style="color: red"
-                                        class="error">{{ $message }}</span>@enderror
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="form-group">
-                            <div>
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <button type="button"
                                             class="btn waves-effect waves-light btn-primary phetsarath-font">ວັນທີ</button>
                                     </span>
                                     <input type="date" name="start" id="start"
@@ -115,9 +94,14 @@
                                 <div class="col-12 text-center py-4">
                                     <h4><b class="phetsarath-font text-black"
                                             style="color: black;"><u>ລາຍງານບັນຊີປະຈຳວັນ</u></b></h4>
-                                    <span>
-                                        ແຕ່ວັນທີ .......................... ຫາ ..........................
-                                    </span>
+                                    <p class="py-3">
+                                        ສາຂາ : @if($branch_ids) {{$data_branch->name}} @else ທັງໝົດ @endif
+                                        <br>
+                                        ແຕ່ວັນທີ @if($starts) {{date('d/m/Y', strtotime($starts))}} @else
+                                        ..........................@endif ຫາ @if($ends)
+                                        {{date('d/m/Y', strtotime($ends))}}
+                                        @else .......................... @endif
+                                    </p>
                                 </div>
                                 <div class="col-12 text-center">
 
@@ -127,28 +111,49 @@
                                 <div class="col-12">
                                     <table border="1" width="100%">
                                         <tr class="text-center">
-                                            <th rowspan="2" class="p-2">ລຳດັບ</th>
-                                            <th rowspan="2" class="p-2">ວັນທີສ້າງ</th>
+                                            <th rowspan="3" class="p-2">ລຳດັບ</th>
+                                            <th rowspan="3" class="p-2">ວັນທີສ້າງ</th>
                                             <th colspan="2" class="p-2">ເລກທີບິນ</th>
                                             <th colspan="2" class="p-2">ເນື້ອໃນລາຍການ</th>
-                                            <th colspan="2" class="p-2">ຈຳນວນເງິນ</th>
+                                            <th colspan="4" class="p-2">ຈຳນວນເງິນ</th>
                                         </tr>
                                         <tr class="text-center">
-                                            <th class="p-2">ໜີ້</th>
-                                            <th class="p-2">ມີ</th>
-                                            <th class="p-2">ໜີ້</th>
-                                            <th class="p-2">ມີ</th>
-                                            <th class="p-2">ໜີ້</th>
-                                            <th class="p-2">ມີ</th>
+                                            <th rowspan="2" class="p-2">ໜີ້</th>
+                                            <th rowspan="2" class="p-2">ມີ</th>
+                                            <th rowspan="2" class="p-2">ໜີ້</th>
+                                            <th rowspan="2" class="p-2">ມີ</th>
+                                            <th colspan="2" class="p-2">ໜີ້</th>
+                                            <th colspan="2" class="p-2">ມີ</th>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <th class="p-2">ກິບ (LAK)</th>
+                                            <th class="p-2">ບາດ (THB)</th>
+                                            <th class="p-2">ກິບ (LAK)</th>
+                                            <th class="p-2">ບາດ (THB)</th>
                                         </tr>
                                         <tbody>
+                                        @php $no = 1; @endphp
 
-
+                                            @forelse ($data as $item)
+                                                <tr class="text-center">
+                                                    <td class="p-2">{{$no++}}</td>
+                                                    <td class="p-2">{{date('d/m/Y',strtotime($item->created_date))}}</td>
+                                                    <td class="p-2">@if($item->type == 'de'){{$item->code}}@endif</td>
+                                                    <td class="p-2">@if($item->type == 'cr'){{$item->code}}@endif</td>
+                                                    <td class="p-2">@if($item->type == 'de'){{$item->detail}}@endif</td>
+                                                    <td class="p-2">@if($item->type == 'cr'){{$item->detail}}@endif</td>
+                                                    <td class="p-2">@if($item->type == 'de'){{number_format($item->money_lak)}}@endif</td>
+                                                    <td class="p-2">@if($item->type == 'de'){{number_format($item->money_thb)}}@endif</td>
+                                                    <td class="p-2">@if($item->type == 'cr'){{number_format($item->money_lak)}}@endif</td>
+                                                    <td class="p-2">@if($item->type == 'cr'){{number_format($item->money_thb)}}@endif</td>
+                                                </tr>
+                                            @empty
                                             <tr>
-                                                <td colspan="8" class="p-2 text-center"
+                                                <td colspan="10" class="p-2 text-center"
                                                     style="background-color: #CECECE;">
                                                     ບໍ່ມີຂໍ້ມູນ</td>
                                             </tr>
+                                            @endforelse
 
                                         </tbody>
                                     </table>

@@ -7,6 +7,7 @@
             <th style="font-family: 'Phetsarath OT';"> ຊື່ທຸລະກຳ </th>
             <th style="font-family: 'Phetsarath OT';"> ປະເພດ </th>
             <th style="font-family: 'Phetsarath OT';"> ຈຳນວນເງິນ </th>
+            <th style="font-family: 'Phetsarath OT';"> ສະກຸນເງິນ </th>
             <th style="font-family: 'Phetsarath OT';"> ລາຍລະອຽດ </th>
             <th style="font-family: 'Phetsarath OT';"> ສາຂາ </th>
         </tr>
@@ -27,6 +28,7 @@
                 @endif
             </td>
             <td>{{number_format($item->total,2,',','.')}}</td>
+            <td>{{$item->crcname->name}}</td>
             <td style="font-family: 'Phetsarath OT';">{{$item->detail}}</td>
             <td style="font-family: 'Phetsarath OT';">{{$item->branchname->name}}</td>
         </tr>

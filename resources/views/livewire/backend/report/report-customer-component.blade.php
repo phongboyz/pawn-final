@@ -142,10 +142,22 @@
                                                     @endif
                                                     @endforeach
                                                 </td>
-                                                <td class="text-center">{{number_format($item->money)}}</td>
-                                                <td class="text-center">{{number_format($item->balance)}}</td>
+                                                <td class="text-center">
+                                                    @foreach ($data_cus_thb as $items)
+                                                    @if ($item->cus_id == $items->cus_id)
+                                                    {{number_format($items->money)}}
+                                                    @endif
+                                                    @endforeach
+                                                </td>
                                                 <td class="text-center">
                                                     @foreach ($data_cus_lak as $items)
+                                                    @if ($item->cus_id == $items->cus_id)
+                                                    {{number_format($items->balance)}}
+                                                    @endif
+                                                    @endforeach
+                                                </td>
+                                                <td class="text-center">
+                                                    @foreach ($data_cus_thb as $items)
                                                     @if ($item->cus_id == $items->cus_id)
                                                     {{number_format($items->balance)}}
                                                     @endif

@@ -78,13 +78,13 @@
 
                     </div>
                     <div class="col-12">
-                            <hr>
-                        </div>
+                        <hr>
+                    </div>
                 </div>
 
                 <div class="right_content">
                     <div class="row" style="display: {{$show}};">
-                        
+
                         <div class="col-12 text-center">
                             <span>ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ</span><br>
                             <span>ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນາຖາວອນ</span><br>
@@ -94,9 +94,12 @@
                             <h4><b class="phetsarath-font text-black" style="color: black;"><u>ລາຍງານສະຖິຕິຫຼັກຊັບ <br>
                                         (ບັນຊີສະຖິຕິແຍກຕາມປະເພດຫຼັກຊັບ)</u></b></h4>
                             <p class="py-3">
-                                ສາຂາ : ທັງໝົດ
+                                ສາຂາ : @if($branch_ids) {{$data_branch->name}} @else ທັງໝົດ @endif
                                 <br>
-                                ແຕ່ວັນທີ .......................... ຫາ ..........................
+                                ແຕ່ວັນທີ @if($starts) {{date('d/m/Y', strtotime($starts))}} @else
+                                ..........................@endif ຫາ @if($ends)
+                                {{date('d/m/Y', strtotime($ends))}}
+                                @else .......................... @endif
                             </p>
                         </div>
                         <div class="col-12 text-center">
@@ -119,12 +122,23 @@
                                         <th class="p-2">ບາດ (THB)</th>
                                     </tr>
                                 </thead>
-
-                                <tr>
-                                    <td colspan="5" class="p-2 text-center" style="background-color: #CECECE;">
-                                        ບໍ່ມີຂໍ້ມູນ
-                                    </td>
-                                </tr>
+                                <tbody>
+                                    @php $no = 1; @endphp
+                                    @forelse ($data as $item)
+                                    <tr class="text-center">
+                                        <td class="px-2">{{$no++}}</td>
+                                        <td class="px-2">{{$item->catename->name}}</td>
+                                        <td class="px-2">{{$item->count}}</td>
+                                        <td class="px-2">{{number_format($item->lak)}}</td>
+                                        <td class="px-2">{{number_format($item->thb)}}</td>
+                                    </tr>
+                                    @empty
+                                    <tr>
+                                        <td colspan="5" class="p-2 text-center" style="background-color: #CECECE;">
+                                            ບໍ່ມີຂໍ້ມູນ
+                                        </td>
+                                    </tr>
+                                    @endforelse
 
                                 </tbody>
                             </table>
