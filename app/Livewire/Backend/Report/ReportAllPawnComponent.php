@@ -7,16 +7,19 @@ use App\Models\Branch;
 use App\Models\Socost;
 use App\Models\Pawn;
 use App\Models\PawnDetail;
+use App\Models\Currency;
 
 class ReportAllPawnComponent extends Component
 {
-    public $branchs, $data = [];
-    public $branch_id, $start, $end, $type;
-    public $show = 'show';
+    public $branchs, $data = [], $crcs;
+    public $branch_id, $branch_ids, $crc_id, $start, $end, $starts, $ends, $type;
+    public $show = 'none';
     public $pdf;
+    public $data_pawn, $data_branch;
 
     public function mount(){
         $this->branchs = Branch::select('id','name')->get();
+        $this->crcs = Currency::select('id','name')->get();
     }
 
     public function render()
@@ -25,24 +28,23 @@ class ReportAllPawnComponent extends Component
     }
     
     public function searchData(){
-        if($this->start && $this->end){
+        $this->validate([
+            'start'=>'required',
+            'end'=>'required',
+        ],[
+            'start.required'=>'ກະລຸນາເລືອກ ວັນທີເລີ່ມຕົ້ນ ກ່ອນ!',
+            'end.required'=>'ກະລຸນາປເລືອກ ວັນທີສິ້ນສຸດ ກ່ອນ!',
+        ]);
             $this->show = 'show';
+            $this->starts = $this->start;$this->ends = $this->end;
             if(!empty($this->branch_id)){
-                if($this->type){
-                    $this->data = Socost::whereBetween('created_date', [$this->start,$this->end])->where('branch_id',$this->branch_id)->where('type',$this->type)->orderBy('id','desc')->get();
-                }else{
-                    $this->data = Socost::whereBetween('created_date', [$this->start,$this->end])->where('branch_id',$this->branch_id)->orderBy('id','desc')->get();
-                }
+                $this->branch_ids = $this->branch_id;
+                $this->data_branch = Branch::find($this->branch_id);
+                $this->data = Pawn::whereBetween('created_date', [$this->start,$this->end])->where('branch_id', $this->branch_id)->get();
             }else{
-                if($this->type){
-                    $this->data = Socost::whereBetween('created_date', [$this->start,$this->end])->where('type',$this->type)->orderBy('id','desc')->get();
-                }else{
-                    $this->data = Socost::whereBetween('created_date', [$this->start,$this->end])->orderBy('id','desc')->get();
-                }
+                $this->branch_ids = null;
+                $this->data = Pawn::whereBetween('created_date', [$this->start,$this->end])->get();
             }
-        }else{
-            $this->dispatch('alert',type: 'error', message:'ກະລຸນາເລືອກວັນທີ ຫາ ວັນທີກ່ອນ!');
-        }
     }
 
     public function exportExcel()

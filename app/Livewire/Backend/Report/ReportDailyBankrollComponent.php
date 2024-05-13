@@ -12,9 +12,10 @@ use App\Models\Currency;
 class ReportDailyBankrollComponent extends Component
 {
     public $branchs, $data = [], $crcs;
-    public $branch_id, $crc_id, $start, $end, $type;
+    public $branch_id, $crc_id, $start, $end, $starts, $ends, $type;
     public $show = 'show';
     public $pdf;
+    public $data_pawn;
 
     public function mount(){
         $this->branchs = Branch::select('id','name')->get();
@@ -27,24 +28,24 @@ class ReportDailyBankrollComponent extends Component
     }
 
     public function searchData(){
-        if($this->start && $this->end){
+        $this->validate([
+            'crc_id'=>'required',
+            'start'=>'required',
+            'end'=>'required',
+        ],[
+            'crc_id.required'=>'ກະລຸນາເລືອກ ສະກຸນເງິນ ກ່ອນ!',
+            'start.required'=>'ກະລຸນາເລືອກ ວັນທີເລີ່ມຕົ້ນ ກ່ອນ!',
+            'end.required'=>'ກະລຸນາປເລືອກ ວັນທີສິ້ນສຸດ ກ່ອນ!',
+        ]);
+
             $this->show = 'show';
+            $this->starts = $this->start;$this->ends = $this->end;
             if(!empty($this->branch_id)){
-                if($this->type){
-                    $this->data = Socost::whereBetween('created_date', [$this->start,$this->end])->where('branch_id',$this->branch_id)->where('type',$this->type)->orderBy('id','desc')->get();
-                }else{
                     $this->data = Socost::whereBetween('created_date', [$this->start,$this->end])->where('branch_id',$this->branch_id)->orderBy('id','desc')->get();
-                }
             }else{
-                if($this->type){
-                    $this->data = Socost::whereBetween('created_date', [$this->start,$this->end])->where('type',$this->type)->orderBy('id','desc')->get();
-                }else{
                     $this->data = Socost::whereBetween('created_date', [$this->start,$this->end])->orderBy('id','desc')->get();
-                }
+                    $this->data_pawn = Pawn::whereBetween('created_date', [$this->start,$this->end])->where('crc_id',$this->crc_id)->whereIn('status',['t','f'])->sum('money');
             }
-        }else{
-            $this->dispatch('alert',type: 'error', message:'ກະລຸນາເລືອກວັນທີ ຫາ ວັນທີກ່ອນ!');
-        }
     }
 
     public function exportExcel()
