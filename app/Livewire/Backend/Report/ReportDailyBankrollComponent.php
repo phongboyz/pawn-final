@@ -45,7 +45,7 @@ class ReportDailyBankrollComponent extends Component
             if(!empty($this->branch_id)){
                 $this->branch_ids = $this->branch_id;
                 $this->data_branch = Branch::find($this->branch_id);
-
+                $this->data = Transaction::whereBetween('created_date', [$this->starts,$this->ends])->where('branch_id',$this->branch_id)->get();
             }else{
                 $this->data = Transaction::whereBetween('created_date', [$this->starts,$this->ends])->get();
             }
