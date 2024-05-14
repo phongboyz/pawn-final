@@ -8,6 +8,7 @@ use App\Models\Socost;
 use App\Models\Pawn;
 use App\Models\PawnDetail;
 use App\Models\Currency;
+use App\Exports\ReportAllPawn;
 
 class ReportAllPawnComponent extends Component
 {
@@ -50,7 +51,7 @@ class ReportAllPawnComponent extends Component
     public function exportExcel()
     {
         if($this->show == 'show'){
-            
+            return (new ReportAllPawn($this->data))->download('excel-report-allpawns.xlsx');
         }else{
             $this->dispatch('alert',type: 'error', message:'ກະລຸນາສ້າງລາຍງານກ່ອນ!');
         }

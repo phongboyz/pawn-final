@@ -8,6 +8,7 @@ use App\Models\Socost;
 use App\Models\Pawn;
 use App\Models\PawnDetail;
 use App\Models\Currency;
+use App\Exports\ReportFinan;
 
 class ReportFinancailComponent extends Component
 {
@@ -72,7 +73,7 @@ class ReportFinancailComponent extends Component
     public function exportExcel()
     {
         if($this->show == 'show'){
-            
+            return (new ReportFinan($this->data))->download('excel-report-finan.xlsx');
         }else{
             $this->dispatch('alert',type: 'error', message:'ກະລຸນາສ້າງລາຍງານກ່ອນ!');
         }

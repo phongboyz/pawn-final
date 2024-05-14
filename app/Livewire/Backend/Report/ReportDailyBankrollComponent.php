@@ -9,6 +9,7 @@ use App\Models\Pawn;
 use App\Models\PawnDetail;
 use App\Models\Currency;
 use App\Models\Transaction;
+use App\Exports\ReportDaily;
 
 class ReportDailyBankrollComponent extends Component
 {
@@ -53,7 +54,7 @@ class ReportDailyBankrollComponent extends Component
     public function exportExcel()
     {
         if($this->show == 'show'){
-            
+            return (new ReportDaily($this->data))->download('excel-report-daily.xlsx');
         }else{
             $this->dispatch('alert',type: 'error', message:'ກະລຸນາສ້າງລາຍງານກ່ອນ!');
         }

@@ -8,6 +8,7 @@ use App\Models\Socost;
 use App\Models\Pawn;
 use App\Models\PawnDetail;
 use App\Models\Customer;
+use App\Exports\ReportCustomer;
 
 class ReportCustomerComponent extends Component
 {
@@ -161,7 +162,7 @@ class ReportCustomerComponent extends Component
     public function exportExcel()
     {
         if($this->show == 'show'){
-            
+            return (new ReportAllPawn($this->data))->download('excel-report-allpawns.xlsx');
         }else{
             $this->dispatch('alert',type: 'error', message:'ກະລຸນາສ້າງລາຍງານກ່ອນ!');
         }

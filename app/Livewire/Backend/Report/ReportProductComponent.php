@@ -8,6 +8,7 @@ use App\Models\Socost;
 use App\Models\Pawn;
 use App\Models\PawnDetail;
 use App\Models\Transaction;
+use App\Exports\ReportProduct;
 
 class ReportProductComponent extends Component
 {
@@ -93,7 +94,7 @@ class ReportProductComponent extends Component
     public function exportExcel()
     {
         if($this->show == 'show'){
-            
+            return (new ReportProduct($this->data))->download('excel-report-product.xlsx');
         }else{
             $this->dispatch('alert',type: 'error', message:'ກະລຸນາສ້າງລາຍງານກ່ອນ!');
         }
