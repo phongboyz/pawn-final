@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 12, 2024 at 09:48 AM
+-- Generation Time: May 13, 2024 at 04:49 PM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `apps` (
 --
 
 INSERT INTO `apps` (`id`, `name`, `type`, `phone`, `facebook`, `tiktok`, `logo`, `detail`, `active`, `created_at`, `updated_at`) VALUES
-(1, 'Somphone', NULL, '+8562097778889', NULL, NULL, 'upload/app/logo-pawn.png', 'kk2', 1, NULL, '2024-05-12 02:29:48');
+(1, 'Somphone', NULL, '+8562097778889', NULL, NULL, 'upload/app/logo-pawn.png', 'kk2', 1, NULL, '2024-05-12 05:40:31');
 
 -- --------------------------------------------------------
 
@@ -101,8 +101,8 @@ CREATE TABLE IF NOT EXISTS `cache` (
 --
 
 INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
-('356a192b7913b04c54574d18c28d46e6395428ab:timer', 'i:1715502703;', 1715502703),
-('356a192b7913b04c54574d18c28d46e6395428ab', 'i:1;', 1715502703);
+('356a192b7913b04c54574d18c28d46e6395428ab:timer', 'i:1715524297;', 1715524297),
+('356a192b7913b04c54574d18c28d46e6395428ab', 'i:1;', 1715524297);
 
 -- --------------------------------------------------------
 
@@ -198,8 +198,8 @@ CREATE TABLE IF NOT EXISTS `customers` (
 --
 
 INSERT INTO `customers` (`id`, `count_sv`, `gender`, `name`, `lname`, `phone`, `address`, `vill_id`, `dis_name`, `pro_name`, `detail`, `image`, `created_at`, `updated_at`) VALUES
-(1, 0, 'm', 'ພົງສະຫວັນ', 'ບຸບຜາຈັນ', '020 55588662', 'ທ່າພະລານໄຊ, ໄຊເສດຖາ, ນະຄອນຫຼວງວຽງຈັນ', 1, 3, 1, NULL, 'upload/customers/240424023015.jpg', NULL, '2024-04-23 19:45:29'),
-(5, 0, 'f', 'ສຸລິຍາ', 'ອິນທະວົງ', '020 54243733', 'ທ່າພະລານໄຊ, ໄຊເສດຖາ, ນະຄອນຫຼວງວຽງຈັນ', 1, 3, 1, NULL, NULL, '2024-04-28 01:48:08', '2024-04-28 01:48:55'),
+(1, 4, 'm', 'ພົງສະຫວັນ', 'ບຸບຜາຈັນ', '020 55588662', 'ທ່າພະລານໄຊ, ໄຊເສດຖາ, ນະຄອນຫຼວງວຽງຈັນ', 1, 3, 1, NULL, 'upload/customers/240424023015.jpg', NULL, '2024-05-13 08:14:09'),
+(5, 1, 'f', 'ສຸລິຍາ', 'ອິນທະວົງ', '020 54243733', 'ທ່າພະລານໄຊ, ໄຊເສດຖາ, ນະຄອນຫຼວງວຽງຈັນ', 1, 3, 1, NULL, NULL, '2024-04-28 01:48:08', '2024-05-13 08:36:58'),
 (4, 0, 'm', 'ຄຳພຸດ', 'ຜາທອງ', '020 59829169', NULL, NULL, NULL, NULL, NULL, NULL, '2024-04-26 03:19:57', '2024-04-26 03:19:57');
 
 -- --------------------------------------------------------
@@ -298,7 +298,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) COLLATE utf8mb3_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -321,7 +321,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2024_04_25_074011_create_pawns_table', 7),
 (15, '2024_04_25_074018_create_pawn_details_table', 7),
 (16, '2024_04_29_040001_create_socosts_table', 8),
-(17, '2024_05_12_085816_create_apps_table', 9);
+(17, '2024_05_12_085816_create_apps_table', 9),
+(18, '2024_05_13_134824_create_transactions_table', 10);
 
 -- --------------------------------------------------------
 
@@ -403,21 +404,15 @@ CREATE TABLE IF NOT EXISTS `pawns` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `pawns`
 --
 
 INSERT INTO `pawns` (`id`, `code`, `product_id`, `cus_id`, `crc_id`, `rate`, `money`, `money_name`, `interest_percent`, `interest`, `balance`, `balance_int`, `interestType`, `pay_money`, `pay_int`, `adj_percent`, `adj_money`, `fees_percent`, `fees_money`, `discount`, `detail`, `status`, `user_id`, `branch_id`, `count_date`, `nguad`, `created_date`, `expire_date`, `count_expire_date`, `created_at`, `updated_at`) VALUES
-(1, 'TX-1', 1, 1, 1, 0.00, 3000000.00, 'ສາມລ້ານກິບຖ້ວນ', 3.00, 90000.00, 3000000.00, 90000.00, 'less', 0.00, 0.00, 1.50, 0.00, 1.00, 0.00, 0.00, NULL, 'p', 1, 1, 90, 3, '2024-04-25', '2024-07-24', 0, '2024-04-25 10:16:35', '2024-04-25 10:16:35'),
-(2, 'TX-2', 1, 1, 1, 0.00, 3000000.00, 'ສາມລ້ານກິບຖ້ວນ', 3.00, 90000.00, 3000000.00, 90000.00, 'less', 0.00, 0.00, 1.00, 0.00, 1.00, 0.00, 0.00, NULL, 'p', 1, 1, 90, 3, '2024-04-25', '2024-07-24', 0, '2024-04-25 10:17:58', '2024-04-25 10:17:58'),
-(3, 'TX-3', 1, 1, 1, 0.00, 1000000.00, 'ໜຶ່ງລ້ານກິບຖ້ວນ', 3.00, 30000.00, 0.00, 0.00, 'constant', 1000000.00, 30000.00, 1.50, 0.00, 1.00, 10000.00, 0.00, NULL, 'f', 1, 1, 60, 2, '2024-04-26', '2024-06-25', 0, '2024-04-25 19:44:55', '2024-04-28 09:45:26'),
-(4, 'TX-4', 1, 4, 1, 0.00, 1000000.00, 'ໜຶ່ງລ້ານກິບຖ້ວນ', 0.00, 30000.00, 0.00, 0.00, 'constant', 1000000.00, 90000.00, 21.00, 0.00, 1.00, 10000.00, 3333.34, NULL, 'f', 1, 1, 90, 3, '2024-04-26', '2024-07-25', 0, '2024-04-26 03:20:37', '2024-04-28 09:42:57'),
-(5, 'TX-5', 1, 4, 1, 0.00, 1000000.00, 'ໜຶ່ງລ້ານກິບຖ້ວນ', 0.00, 10000.00, 1000000.00, 0.00, 'constant', 0.00, 0.00, 1.00, 0.00, 1.00, 0.00, 0.00, NULL, 'r', 1, 1, 10, 10, '2024-04-29', '2024-05-09', 0, '2024-04-28 19:24:25', '2024-04-28 20:18:18'),
-(6, 'TX-6', 1, 4, 1, 0.00, 1000000.00, 'ໜຶ່ງລ້ານກິບຖ້ວນ', 0.00, 10000.00, 1000000.00, 100000.00, 'constant', 0.00, 0.00, 1.00, 0.00, 1.00, 0.00, 0.00, NULL, 'r', 1, 1, 10, 10, '2024-04-29', '2024-05-09', 0, '2024-04-28 19:24:49', '2024-04-28 20:18:58'),
-(7, 'TX-7', 1, 1, 1, 0.00, 1000000.00, 'ໜຶ່ງລ້ານກິບຖ້ວນ', 0.00, 10000.00, 1000000.00, 55000.00, 'less', 0.00, 0.00, 1.00, 0.00, 1.00, 0.00, 0.00, NULL, 'p', 1, 1, 10, 10, '2024-04-29', '2024-05-09', 0, '2024-04-28 19:26:16', '2024-04-28 19:26:16'),
-(8, 'TX-8', 1, 1, 1, 0.00, 2000000.00, 'ສອງລ້ານກິບຖ້ວນ', 0.00, 20000.00, 0.00, 0.00, 'constant', 2000000.00, 40000.00, 1.00, 0.00, 1.00, 20000.00, 0.00, NULL, 't', 1, 1, 20, 2, '2024-04-29', '2024-05-19', 0, '2024-04-28 19:51:41', '2024-05-08 20:14:36');
+(1, 'TX-1', 1, 1, 1, 0.00, 1000000.00, 'ໜຶ່ງລ້ານກິບຖ້ວນ', 1.00, 10000.00, 900000.00, 90000.00, 'constant', 100000.00, 10000.00, 1.00, 0.00, 1.00, 10000.00, 0.00, NULL, 't', 1, 1, 10, 10, '2024-05-13', '2024-05-23', 0, '2024-05-13 08:14:09', '2024-05-13 08:37:55'),
+(2, 'TX-2', 1, 5, 2, 0.00, 3000000.00, 'ສາມລ້ານກິບຖ້ວນ', 1.00, 30000.00, 0.00, 0.00, 'constant', 3000000.00, 90000.00, 1.00, 0.00, 1.00, 30000.00, 0.00, NULL, 'f', 1, 1, 3, 3, '2024-05-13', '2024-05-16', 0, '2024-05-13 08:36:58', '2024-05-13 08:38:10');
 
 -- --------------------------------------------------------
 
@@ -439,14 +434,8 @@ CREATE TABLE IF NOT EXISTS `pawn_code` (
 --
 
 INSERT INTO `pawn_code` (`name`, `number`, `created_at`, `updated_at`) VALUES
-('TX', 1, '2024-04-25 10:16:35', '2024-04-25 10:16:35'),
-('TX', 2, '2024-04-25 10:17:58', '2024-04-25 10:17:58'),
-('TX', 3, '2024-04-25 19:44:55', '2024-04-25 19:44:55'),
-('TX', 4, '2024-04-26 03:20:37', '2024-04-26 03:20:37'),
-('TX', 5, '2024-04-28 19:24:25', '2024-04-28 19:24:25'),
-('TX', 6, '2024-04-28 19:24:49', '2024-04-28 19:24:49'),
-('TX', 7, '2024-04-28 19:26:16', '2024-04-28 19:26:16'),
-('TX', 8, '2024-04-28 19:51:41', '2024-04-28 19:51:41');
+('TX', 1, '2024-05-13 08:14:09', '2024-05-13 08:14:09'),
+('TX', 2, '2024-05-13 08:36:58', '2024-05-13 08:36:58');
 
 -- --------------------------------------------------------
 
@@ -479,56 +468,26 @@ CREATE TABLE IF NOT EXISTS `pawn_details` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `pawn_details`
 --
 
 INSERT INTO `pawn_details` (`id`, `pawn_id`, `apm_count`, `apm_date`, `apm_money`, `apm_int`, `apm_fees`, `pay_date`, `expire_day`, `pay`, `int`, `fees`, `int_adj`, `discount`, `total`, `detail`, `image`, `status`, `user_id`, `branch_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '2024-05-25', 1000000.00, 90000.00, 30000.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 'x', 1, 1, '2024-04-25 10:16:35', '2024-04-25 10:16:35'),
-(2, 1, 2, '2024-06-24', 1000000.00, 30000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-25 10:16:35', '2024-04-25 10:16:35'),
-(3, 1, 3, '2024-07-24', 1000000.00, 0.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-25 10:16:35', '2024-04-25 10:16:35'),
-(4, 2, 1, '2024-05-25', 1000000.00, 90000.00, 30000.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-25 10:17:58', '2024-04-25 10:17:58'),
-(5, 2, 2, '2024-06-24', 1000000.00, 60000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-25 10:17:58', '2024-04-25 10:17:58'),
-(6, 2, 3, '2024-07-24', 1000000.00, 30000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-25 10:17:58', '2024-04-25 10:17:58'),
-(7, 3, 1, '2024-05-26', 500000.00, 30000.00, 10000.00, '2024-04-28', 0, 1000000.00, 30000.00, 10000.00, 0.00, 0.00, 1040000.00, NULL, NULL, 'f', 1, 1, '2024-04-25 19:44:55', '2024-04-28 09:45:26'),
-(8, 3, 2, '2024-06-25', 500000.00, 30000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-25 19:44:55', '2024-04-25 19:44:55'),
-(9, 4, 1, '2024-05-26', 333333.33, 30000.00, 10000.00, '2024-04-28', 0, 333333.33, 30000.00, 10000.00, 0.00, 0.00, 373333.33, NULL, NULL, 'f', 1, 1, '2024-04-26 03:20:37', '2024-04-28 08:53:57'),
-(10, 4, 2, '2024-06-25', 333333.33, 30000.00, 0.00, '2024-04-28', 0, 333333.33, 30000.00, 0.00, 0.00, 0.00, 363333.33, NULL, NULL, 'f', 1, 1, '2024-04-26 03:20:37', '2024-04-28 08:55:51'),
-(11, 4, 3, '2024-07-25', 333333.33, 30000.00, 0.00, '2024-04-28', 0, 333333.34, 30000.00, 0.00, 0.00, 3333.34, 360000.00, NULL, NULL, 'f', 1, 1, '2024-04-26 03:20:37', '2024-04-28 09:42:57'),
-(12, 5, 1, '2024-04-30', 100000.00, 10000.00, 10000.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:24:25', '2024-04-28 19:24:25'),
-(13, 5, 2, '2024-05-01', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:24:25', '2024-04-28 19:24:25'),
-(14, 5, 3, '2024-05-02', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:24:25', '2024-04-28 19:24:25'),
-(15, 5, 4, '2024-05-03', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:24:25', '2024-04-28 19:24:25'),
-(16, 5, 5, '2024-05-04', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:24:25', '2024-04-28 19:24:25'),
-(17, 5, 6, '2024-05-05', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:24:25', '2024-04-28 19:24:25'),
-(18, 5, 7, '2024-05-06', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:24:25', '2024-04-28 19:24:25'),
-(19, 5, 8, '2024-05-07', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:24:25', '2024-04-28 19:24:25'),
-(20, 5, 9, '2024-05-08', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:24:25', '2024-04-28 19:24:25'),
-(21, 5, 10, '2024-05-09', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:24:25', '2024-04-28 19:24:25'),
-(22, 6, 1, '2024-04-30', 100000.00, 10000.00, 10000.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 'r', 1, 1, '2024-04-28 19:24:49', '2024-04-28 20:18:58'),
-(23, 6, 2, '2024-05-01', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 'r', 1, 1, '2024-04-28 19:24:49', '2024-04-28 20:18:58'),
-(24, 6, 3, '2024-05-02', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 'r', 1, 1, '2024-04-28 19:24:49', '2024-04-28 20:18:58'),
-(25, 6, 4, '2024-05-03', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 'r', 1, 1, '2024-04-28 19:24:49', '2024-04-28 20:18:58'),
-(26, 6, 5, '2024-05-04', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 'r', 1, 1, '2024-04-28 19:24:49', '2024-04-28 20:18:58'),
-(27, 6, 6, '2024-05-05', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 'r', 1, 1, '2024-04-28 19:24:49', '2024-04-28 20:18:58'),
-(28, 6, 7, '2024-05-06', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 'r', 1, 1, '2024-04-28 19:24:49', '2024-04-28 20:18:58'),
-(29, 6, 8, '2024-05-07', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 'r', 1, 1, '2024-04-28 19:24:49', '2024-04-28 20:18:58'),
-(30, 6, 9, '2024-05-08', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 'r', 1, 1, '2024-04-28 19:24:49', '2024-04-28 20:18:58'),
-(31, 6, 10, '2024-05-09', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 'r', 1, 1, '2024-04-28 19:24:49', '2024-04-28 20:18:58'),
-(32, 7, 1, '2024-04-30', 100000.00, 10000.00, 10000.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:26:16', '2024-04-28 19:26:16'),
-(33, 7, 2, '2024-05-01', 100000.00, 9000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:26:16', '2024-04-28 19:26:16'),
-(34, 7, 3, '2024-05-02', 100000.00, 8000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:26:16', '2024-04-28 19:26:16'),
-(35, 7, 4, '2024-05-03', 100000.00, 7000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:26:16', '2024-04-28 19:26:16'),
-(36, 7, 5, '2024-05-04', 100000.00, 6000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:26:16', '2024-04-28 19:26:16'),
-(37, 7, 6, '2024-05-05', 100000.00, 5000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:26:16', '2024-04-28 19:26:16'),
-(38, 7, 7, '2024-05-06', 100000.00, 4000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:26:16', '2024-04-28 19:26:16'),
-(39, 7, 8, '2024-05-07', 100000.00, 3000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:26:16', '2024-04-28 19:26:16'),
-(40, 7, 9, '2024-05-08', 100000.00, 2000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:26:16', '2024-04-28 19:26:16'),
-(41, 7, 10, '2024-05-09', 100000.00, 1000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-04-28 19:26:16', '2024-04-28 19:26:16'),
-(42, 8, 1, '2024-05-09', 1000000.00, 20000.00, 20000.00, '2024-04-29', 0, 1000000.00, 20000.00, 20000.00, 0.00, 0.00, 1040000.00, NULL, NULL, 'f', 1, 1, '2024-04-28 19:51:41', '2024-04-29 01:00:40'),
-(43, 8, 2, '2024-05-19', 1000000.00, 20000.00, 0.00, '2024-05-09', 0, 1000000.00, 20000.00, 0.00, 0.00, 0.00, 1020000.00, NULL, NULL, 'f', 1, 1, '2024-04-28 19:51:41', '2024-05-08 20:14:36');
+(1, 1, 1, '2024-05-14', 100000.00, 10000.00, 10000.00, '2024-05-13', 0, 100000.00, 10000.00, 10000.00, 0.00, 0.00, 120000.00, NULL, NULL, 'f', 1, 1, '2024-05-13 08:14:09', '2024-05-13 08:37:55'),
+(2, 1, 2, '2024-05-15', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-05-13 08:14:09', '2024-05-13 08:14:09'),
+(3, 1, 3, '2024-05-16', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-05-13 08:14:09', '2024-05-13 08:14:09'),
+(4, 1, 4, '2024-05-17', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-05-13 08:14:09', '2024-05-13 08:14:09'),
+(5, 1, 5, '2024-05-18', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-05-13 08:14:09', '2024-05-13 08:14:09'),
+(6, 1, 6, '2024-05-19', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-05-13 08:14:09', '2024-05-13 08:14:09'),
+(7, 1, 7, '2024-05-20', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-05-13 08:14:09', '2024-05-13 08:14:09'),
+(8, 1, 8, '2024-05-21', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-05-13 08:14:09', '2024-05-13 08:14:09'),
+(9, 1, 9, '2024-05-22', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-05-13 08:14:09', '2024-05-13 08:14:09'),
+(10, 1, 10, '2024-05-23', 100000.00, 10000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-05-13 08:14:09', '2024-05-13 08:14:09'),
+(11, 2, 1, '2024-05-14', 1000000.00, 30000.00, 30000.00, '2024-05-13', 0, 3000000.00, 90000.00, 30000.00, 0.00, 0.00, 3120000.00, NULL, NULL, 'f', 1, 1, '2024-05-13 08:36:58', '2024-05-13 08:38:10'),
+(12, 2, 2, '2024-05-15', 1000000.00, 30000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-05-13 08:36:58', '2024-05-13 08:36:58'),
+(13, 2, 3, '2024-05-16', 1000000.00, 30000.00, 0.00, NULL, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, 't', 1, 1, '2024-05-13 08:36:58', '2024-05-13 08:36:58');
 
 -- --------------------------------------------------------
 
@@ -613,14 +572,15 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`, `permission`, `created_at`, `updated_at`) VALUES
-(1, 'admin', NULL, NULL, NULL);
+(1, 'admin', ',viewMuad,addMuad,editMuad,delMuad,delCate,editCate,addCate,viewCate,viewVil,addVil,editVil,delVil,delDis,editDis,editProv,delProv,delCus,delPro,editPro,editCus,addPawn,addPro,addCus,addProv,addDis,viewDis,viewProv,viewCus,viewPro,viewPawnPend,viewPawnPay,viewPawnAll,viewPawnTran,viewPawnEx,viewPawnFinish,viewPawnReject,viewCrc,addCrc,editCrc,delCrc,delCost,editCost,addCost,viewCost,viewReportCost,viewReportFinan,viewReportDaily,viewReportPawn,viewReportProduct,viewReportCus', NULL, '2024-05-12 10:26:57'),
+(3, 'user', 'addPawn,viewPawnTran,viewPawnEx,viewPawnPay,viewPro,addPro,editPro,viewCus,addCus', NULL, '2024-05-13 06:17:12');
 
 -- --------------------------------------------------------
 
@@ -646,7 +606,8 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('37Sw2Ly8kieaBzs5L3M3gQm2fkRsVRFOuITPkmOC', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiMmlRekYyUlBJbXJValdsb3ZjNzdtS1kyQjJZT1UxYlJTRVlQRnVVNSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hcHBzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1715506189);
+('fSu6AJlAWZPcuDr8SBOm6VfARQaOkXZ80YgJoeQx', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiSlpzN3JUclp6a2ZZUUxwYWNzOHh3UzYyb1ptd3o5TTJNYlR6dlExeSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmRzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1715618930),
+('VkHIqXKtPZca25wLYME2rTgjAzwuSHaoicaeBBn8', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiMjlZV2V2Nm5tZW9PVm9kbGVrQTRnWldZWThsMTBhSUdXMGZpNm9aMSI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozMToiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2N1c3RvbWVycyI7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM0OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvY3JlYXRlLXBhd25zIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDt9', 1715614640);
 
 -- --------------------------------------------------------
 
@@ -660,6 +621,7 @@ CREATE TABLE IF NOT EXISTS `socosts` (
   `code` char(8) COLLATE utf8mb3_unicode_ci NOT NULL,
   `name` varchar(191) COLLATE utf8mb3_unicode_ci NOT NULL,
   `type` char(8) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `crc_id` int NOT NULL,
   `total` decimal(15,2) NOT NULL DEFAULT '0.00',
   `detail` text COLLATE utf8mb3_unicode_ci,
   `image` text COLLATE utf8mb3_unicode_ci,
@@ -675,8 +637,55 @@ CREATE TABLE IF NOT EXISTS `socosts` (
 -- Dumping data for table `socosts`
 --
 
-INSERT INTO `socosts` (`id`, `code`, `name`, `type`, `total`, `detail`, `image`, `user_id`, `branch_id`, `created_date`, `created_at`, `updated_at`) VALUES
-(2, 'C001', 'ເອົາເງິນເຂົ້າ', 'more', 10000000.00, 'ເງິນຈາກການຂາຍ', NULL, 1, 1, '2024-04-29', NULL, '2024-04-28 23:43:40');
+INSERT INTO `socosts` (`id`, `code`, `name`, `type`, `crc_id`, `total`, `detail`, `image`, `user_id`, `branch_id`, `created_date`, `created_at`, `updated_at`) VALUES
+(1, 'TXC001', 'ເພີ່ມເງິນ', 'normal', 1, 1000000.00, NULL, NULL, 1, 1, '2024-05-13', NULL, NULL),
+(2, 'TXC002', 'ເພີ່ມເງິນ', 'normal', 2, 2000000.00, NULL, NULL, 1, 1, '2024-05-13', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transactions`
+--
+
+DROP TABLE IF EXISTS `transactions`;
+CREATE TABLE IF NOT EXISTS `transactions` (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `created_date` date NOT NULL,
+  `tran_type` char(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `type` char(5) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `code` varchar(191) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `cus_id` int DEFAULT NULL,
+  `cate_id` int DEFAULT NULL,
+  `product_id` int DEFAULT NULL,
+  `crc_id` int DEFAULT NULL,
+  `money_lak` decimal(15,2) NOT NULL DEFAULT '0.00',
+  `money_thb` decimal(15,2) NOT NULL DEFAULT '0.00',
+  `money_usd` decimal(15,2) NOT NULL DEFAULT '0.00',
+  `detail` text COLLATE utf8mb3_unicode_ci,
+  `user_id` int NOT NULL,
+  `branch_id` int NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+
+--
+-- Dumping data for table `transactions`
+--
+
+INSERT INTO `transactions` (`id`, `created_date`, `tran_type`, `type`, `code`, `cus_id`, `cate_id`, `product_id`, `crc_id`, `money_lak`, `money_thb`, `money_usd`, `detail`, `user_id`, `branch_id`, `created_at`, `updated_at`) VALUES
+(1, '2024-05-13', 'cost', 'cr', 'TXC001', NULL, NULL, NULL, 1, 0.00, 1000000.00, 0.00, 'ເພີ່ມເງິນ', 1, 1, '2024-05-13 08:03:43', '2024-05-13 08:03:43'),
+(2, '2024-05-13', 'cost', 'cr', 'TXC002', NULL, NULL, NULL, 2, 2000000.00, 0.00, 0.00, 'ເພີ່ມເງິນ', 1, 1, '2024-05-13 08:04:17', '2024-05-13 08:04:17'),
+(3, '2024-05-13', 'pawn', 'de', 'TX-1', 1, 2, 1, 1, 0.00, 1000000.00, 0.00, 'ສ້າງສັນຍາໃໝ່', 1, 1, '2024-05-13 08:14:09', '2024-05-13 08:14:09'),
+(4, '2024-05-13', 'pawn', 'de', 'TX-2', 5, 2, 1, 2, 3000000.00, 0.00, 0.00, 'ສ້າງສັນຍາໃໝ່', 1, 1, '2024-05-13 08:36:58', '2024-05-13 08:36:58'),
+(5, '2024-05-13', 'pawn', 'cr', 'TX-1', 1, 2, 1, 1, 0.00, 100000.00, 0.00, 'ເງິນຄ່າງວດຊຳລະ', 1, 1, '2024-05-13 08:37:56', '2024-05-13 08:37:56'),
+(6, '2024-05-13', 'pawn', 'cr', 'TX-1', 1, 2, 1, 1, 0.00, 10000.00, 0.00, 'ດອກເບ້ຍຄ່າງວດຊຳລະ', 1, 1, '2024-05-13 08:37:56', '2024-05-13 08:37:56'),
+(7, '2024-05-13', 'pawn', 'cr', 'TX-1', 1, 2, 1, 1, 0.00, 0.00, 0.00, 'ດອກເບ້ຍປັບໄໝຄ່າງວດຊຳລະ', 1, 1, '2024-05-13 08:37:56', '2024-05-13 08:37:56'),
+(8, '2024-05-13', 'pawn', 'cr', 'TX-1', 1, 2, 1, 1, 0.00, 10000.00, 0.00, 'ຄ່າທຳນຽມງວດຊຳລະ', 1, 1, '2024-05-13 08:37:56', '2024-05-13 08:37:56'),
+(9, '2024-05-13', 'pawn', 'cr', 'TX-2', 5, 2, 1, 2, 3000000.00, 0.00, 0.00, 'ເງິນຄ່າງວດຊຳລະ', 1, 1, '2024-05-13 08:38:10', '2024-05-13 08:38:10'),
+(10, '2024-05-13', 'pawn', 'cr', 'TX-2', 5, 2, 1, 2, 90000.00, 0.00, 0.00, 'ດອກເບ້ຍຄ່າງວດຊຳລະ', 1, 1, '2024-05-13 08:38:10', '2024-05-13 08:38:10'),
+(11, '2024-05-13', 'pawn', 'cr', 'TX-2', 5, 2, 1, 2, 0.00, 0.00, 0.00, 'ດອກເບ້ຍປັບໄໝຄ່າງວດຊຳລະ', 1, 1, '2024-05-13 08:38:10', '2024-05-13 08:38:10'),
+(12, '2024-05-13', 'pawn', 'cr', 'TX-2', 5, 2, 1, 2, 30000.00, 0.00, 0.00, 'ຄ່າທຳນຽມງວດຊຳລະ', 1, 1, '2024-05-13 08:38:10', '2024-05-13 08:38:10');
 
 -- --------------------------------------------------------
 
@@ -697,7 +706,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -705,7 +714,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `phone`, `role_id`, `branch_id`, `profile`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'admin', '$2y$12$m3OTKJrraRIcOR0/6///1.1ksZDu68VSVyOayqRIt1oaOlAzzvOMW', '+8562055588663', '1', '1', 'upload/users/240512083044.jpg', NULL, '2024-03-22 04:14:22', '2024-05-12 01:31:15'),
-(3, 'phong2', '$2y$12$5t2Ow5x8DLPQsBAT6hZpTexkSCqheZctP6LEinCvjt1ngTSqTaW0u', NULL, '1', '1', 'upload/users/240512083044.jpg', NULL, NULL, '2024-03-25 23:04:16');
+(3, 'phong2', '$2y$12$5t2Ow5x8DLPQsBAT6hZpTexkSCqheZctP6LEinCvjt1ngTSqTaW0u', NULL, '1', '1', 'upload/users/240512083044.jpg', NULL, NULL, '2024-03-25 23:04:16'),
+(4, 'deth', '$2y$12$cv5D.EIEfYOiIeD5AGjbpORp0vk3rTZFi9yNbjNkwgVreJOz8hmU6', '+8562059829169', '3', '2', 'upload/users/240512023039.jpg', NULL, NULL, '2024-05-12 10:06:06');
 
 -- --------------------------------------------------------
 

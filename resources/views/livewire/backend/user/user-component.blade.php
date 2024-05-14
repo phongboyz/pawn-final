@@ -154,14 +154,14 @@
 
                     </div>
 
-                    <div class="col-2">
+                    <div class="col-1">
                         <!-- <input type="date" name="date" id="date" wire:model="dateS" class="form-control"> -->
                     </div>
                     <div class="col-2">
                         <input type="text" name="search" id="search" wire:model="search" class="form-control"
                             placeholder="ຄົ້ນຫາ">
                     </div>
-                    <div class="col-1 ">
+                    <div class="col-2 ">
                         <button type="button" class="btn btn-primary" wire:click="searchData">
                             <i class="mdi mdi-file-search-outline"></i>
                         </button>
